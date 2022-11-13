@@ -1,0 +1,22 @@
+
+SAMPLE JAVA CODE FOR ACCESSING EVAPOTRANSPIRATION USING
+code.earthengine.google.com
+
+
+var wsb = ee.FeatureCollection("projects/ee-adlceroesf/assets/OysterNH");
+
+var dataset = ee.ImageCollection('IDAHO_EPSCOR/TERRACLIMATE')
+                  .filter(ee.Filter.date('1989-10-01', '2020-09-30'))
+                  .filterBounds(wsb);
+var actualEvapotranspiration = dataset.select('aet');
+var actualEvapotranspirationVis = {
+  min: 0,
+  max: 3140,
+  palette: [
+    '1a3678', '2955bc', '5699ff', '8dbae9', 'acd1ff', 'caebff', 'e5f9ff',
+    'fdffb4', 'ffe6a2', 'ffc969', 'ffa12d', 'ff7c1f', 'ca531a', 'ff0000',
+    'ab0000'
+  ],
+};
+Map.setCenter(-70.96506, 43.1487, 3);
+Map.addLayer(actualEvapotranspiration, actualEvapotranspirationVis, 'Actual Evapotranspiration');

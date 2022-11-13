@@ -510,7 +510,7 @@ lat_lon_df <- data.frame(id = "OysterNH",
                          lat = OysterNH_SiteInfo$dec_lat_va,
                          lon = OysterNH_SiteInfo$dec_long_va)
 
-# Find the 10 closest monitoring stations
+# Find the closest monitoring stations
 
 mon_near <- meteo_nearby_stations(
   lat_lon_df = lat_lon_df,
@@ -521,6 +521,8 @@ mon_near <- meteo_nearby_stations(
   year_max = 2021,
   limit = 10
 )
+
+mon_near
 
 # Select nearest station (first on the list)
 
@@ -545,6 +547,296 @@ OysterNH_precip_summary <- OysterNH_precip %>%
   group_by(water_year) %>% 
   summarize(ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
+################################################################################
+
+# Wappinger Creek, New York = WappingerNY
+
+# Create a data frame of the latitude and longitude of the watershed
+lat_lon_df <- data.frame(id = "WappingerNY",
+                         lat = WappingerNY_SiteInfo$dec_lat_va,
+                         lon = WappingerNY_SiteInfo$dec_long_va)
+
+# Find the closest monitoring stations
+
+mon_near <- meteo_nearby_stations(
+  lat_lon_df = lat_lon_df,
+  lat_colname = "lat",
+  lon_colname = "lon",
+  var = "PRCP",
+  year_min = 1989,
+  year_max = 2021,
+  limit = 50
+)
+
+mon_near
+
+# Select nearest station (first on the list) or nearest station with most complete data
+
+WappingerNY_precip <- meteo_pull_monitors(
+  monitors = mon_near$WappingerNY$id[44],
+  date_min = startDate,    # to be same with the starting and ending date of discharge
+  date_max = endDate,
+  var = "PRCP"
+)
+
+# Convert precipitation from tenths of mm to mm
+
+WappingerNY_precip$prcp_mm <- WappingerNY_precip$prcp / 10
+
+# Add water year to each time step
+
+WappingerNY_precip$water_year <- WaterYear(WappingerNY_precip$date)
+
+# Group data by water year, summarize by getting the mean values per year
+
+WappingerNY_precip_summary <- WappingerNY_precip %>% 
+  group_by(water_year) %>% 
+  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+            ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
+################################################################################
+
+# Brandywine Creek, Pennsylvania = BrandywinePA
+
+# Create a data frame of the latitude and longitude of the watershed
+lat_lon_df <- data.frame(id = "BrandywinePA",
+                         lat = BrandywinePA_SiteInfo$dec_lat_va,
+                         lon = BrandywinePA_SiteInfo$dec_long_va)
+
+# Find the closest monitoring stations
+
+mon_near <- meteo_nearby_stations(
+  lat_lon_df = lat_lon_df,
+  lat_colname = "lat",
+  lon_colname = "lon",
+  var = "PRCP",
+  year_min = 1989,
+  year_max = 2021,
+  limit = 20
+)
+
+mon_near
+
+# Select nearest station (first on the list) or nearest station with most complete data
+
+BrandywinePA_precip <- meteo_pull_monitors(
+  monitors = mon_near$BrandywinePA$id[17],
+  date_min = startDate,    # to be same with the starting and ending date of discharge
+  date_max = endDate,
+  var = "PRCP"
+)
+
+# Convert precipitation from tenths of mm to mm
+
+BrandywinePA_precip$prcp_mm <- BrandywinePA_precip$prcp / 10
+
+# Add water year to each time step
+
+BrandywinePA_precip$water_year <- WaterYear(BrandywinePA_precip$date)
+
+# Group data by water year, summarize by getting the mean values per year
+
+BrandywinePA_precip_summary <- BrandywinePA_precip %>% 
+  group_by(water_year) %>% 
+  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+            ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
+################################################################################
+
+# Mechums River, Virginia = MechumsVA
+
+# Create a data frame of the latitude and longitude of the watershed
+lat_lon_df <- data.frame(id = "MechumsVA",
+                         lat = MechumsVA_SiteInfo$dec_lat_va,
+                         lon = MechumsVA_SiteInfo$dec_long_va)
+
+# Find the closest monitoring stations
+
+mon_near <- meteo_nearby_stations(
+  lat_lon_df = lat_lon_df,
+  lat_colname = "lat",
+  lon_colname = "lon",
+  var = "PRCP",
+  year_min = 1989,
+  year_max = 2021,
+  limit = 20
+)
+
+mon_near
+
+# Select nearest station (first on the list) or nearest station with most complete data
+
+MechumsVA_precip <- meteo_pull_monitors(
+  monitors = mon_near$MechumsVA$id[4],
+  date_min = startDate,    # to be same with the starting and ending date of discharge
+  date_max = endDate,
+  var = "PRCP"
+)
+
+# Convert precipitation from tenths of mm to mm
+
+MechumsVA_precip$prcp_mm <- MechumsVA_precip$prcp / 10
+
+# Add water year to each time step
+
+MechumsVA_precip$water_year <- WaterYear(MechumsVA_precip$date)
+
+# Group data by water year, summarize by getting the mean values per year
+
+MechumsVA_precip_summary <- MechumsVA_precip %>% 
+  group_by(water_year) %>% 
+  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+            ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
+################################################################################
+
+# Flat River, North Carolina = FlatNC
+
+# Create a data frame of the latitude and longitude of the watershed
+lat_lon_df <- data.frame(id = "FlatNC",
+                         lat = FlatNC_SiteInfo$dec_lat_va,
+                         lon = FlatNC_SiteInfo$dec_long_va)
+
+# Find the closest monitoring stations
+
+mon_near <- meteo_nearby_stations(
+  lat_lon_df = lat_lon_df,
+  lat_colname = "lat",
+  lon_colname = "lon",
+  var = "PRCP",
+  year_min = 1989,
+  year_max = 2021,
+  limit = 50
+)
+
+mon_near
+
+# Select nearest station (first on the list) or nearest station with most complete data
+
+FlatNC_precip <- meteo_pull_monitors(
+  monitors = mon_near$FlatNC$id[24],
+  date_min = startDate,    # to be same with the starting and ending date of discharge
+  date_max = endDate,
+  var = "PRCP"
+)
+
+# Convert precipitation from tenths of mm to mm
+
+FlatNC_precip$prcp_mm <- FlatNC_precip$prcp / 10
+
+# Add water year to each time step
+
+FlatNC_precip$water_year <- WaterYear(FlatNC_precip$date)
+
+# Group data by water year, summarize by getting the mean values per year
+
+FlatNC_precip_summary <- FlatNC_precip %>% 
+  group_by(water_year) %>% 
+  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+            ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
+################################################################################
+
+# North Fork Edisto, South Carolina = NorthForkSC
+
+# Create a data frame of the latitude and longitude of the watershed
+lat_lon_df <- data.frame(id = "NorthForkSC",
+                         lat = NorthForkSC_SiteInfo$dec_lat_va,
+                         lon = NorthForkSC_SiteInfo$dec_long_va)
+
+# Find the closest monitoring stations
+
+mon_near <- meteo_nearby_stations(
+  lat_lon_df = lat_lon_df,
+  lat_colname = "lat",
+  lon_colname = "lon",
+  var = "PRCP",
+  year_min = 1989,
+  year_max = 2021,
+  limit = 50
+)
+
+mon_near
+
+# Select nearest station (first on the list) or nearest station with most complete data
+
+NorthForkSC_precip <- meteo_pull_monitors(
+  monitors = mon_near$NorthForkSC$id[1],
+  date_min = startDate,    # to be same with the starting and ending date of discharge
+  date_max = endDate,
+  var = "PRCP"
+)
+
+# Convert precipitation from tenths of mm to mm
+
+NorthForkSC_precip$prcp_mm <- NorthForkSC_precip$prcp / 10
+
+# Add water year to each time step
+
+NorthForkSC_precip$water_year <- WaterYear(NorthForkSC_precip$date)
+
+# Group data by water year, summarize by getting the mean values per year
+
+NorthForkSC_precip_summary <- NorthForkSC_precip %>% 
+  group_by(water_year) %>% 
+  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+            ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
+################################################################################
+
+# Ichawaynochaway, Georgia = IchawayGA
+
+# Create a data frame of the latitude and longitude of the watershed
+lat_lon_df <- data.frame(id = "IchawayGA",
+                         lat = IchawayGA_SiteInfo$dec_lat_va,
+                         lon = IchawayGA_SiteInfo$dec_long_va)
+
+# Find the closest monitoring stations
+
+mon_near <- meteo_nearby_stations(
+  lat_lon_df = lat_lon_df,
+  lat_colname = "lat",
+  lon_colname = "lon",
+  var = "PRCP",
+  year_min = 1989,
+  year_max = 2021,
+  limit = 50
+)
+
+mon_near
+
+# Select nearest station (first on the list) or nearest station with most complete data
+
+IchawayGA_precip <- meteo_pull_monitors(
+  monitors = mon_near$IchawayGA$id[17],
+  date_min = startDate,    # to be same with the starting and ending date of discharge
+  date_max = endDate,
+  var = "PRCP"
+)
+
+# Convert precipitation from tenths of mm to mm
+
+IchawayGA_precip$prcp_mm <- IchawayGA_precip$prcp / 10
+
+# Add water year to each time step
+
+IchawayGA_precip$water_year <- WaterYear(IchawayGA_precip$date)
+
+# Group data by water year, summarize by getting the mean values per year
+
+IchawayGA_precip_summary <- IchawayGA_precip %>% 
+  group_by(water_year) %>% 
+  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+            ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
+
+
 
 
 ################################################################################
@@ -574,4 +866,143 @@ colnames(OysterNH_WBET) <- c("water_year",
 
 OysterNH_WBET$WBET <- OysterNH_WBET$ave_prcp_mm - OysterNH_WBET$ave_runoff_mm
 
+
+################################################################################
+
+# Wappinger Creek, New York = WappingerNY
+
+# Make a data frame containing all necessary variables
+
+WappingerNY_WBET <- data.frame(WappingerNY_summary$water_year,
+                               WappingerNY_precip_summary$ave_prcp_mm,
+                               WappingerNY_summary$ave_runoff_mm)
+
+# Rename columns
+
+colnames(WappingerNY_WBET) <- c("water_year",
+                             "ave_prcp_mm",
+                             "ave_runoff_mm")
+
+# Compute for the ET
+
+WappingerNY_WBET$WBET <- WappingerNY_WBET$ave_prcp_mm - WappingerNY_WBET$ave_runoff_mm
+
+
+################################################################################
+
+# Brandywine Creek, Pennsylvania = BrandywinePA
+
+# Make a data frame containing all necessary variables
+
+BrandywinePA_WBET <- data.frame(BrandywinePA_summary$water_year,
+                                BrandywinePA_precip_summary$ave_prcp_mm,
+                                BrandywinePA_summary$ave_runoff_mm)
+
+# Rename columns
+
+colnames(BrandywinePA_WBET) <- c("water_year",
+                                "ave_prcp_mm",
+                                "ave_runoff_mm")
+
+# Compute for the ET
+
+BrandywinePA_WBET$WBET <- BrandywinePA_WBET$ave_prcp_mm - BrandywinePA_WBET$ave_runoff_mm
+
+
+################################################################################
+
+# Mechums River, Virginia = MechumsVA
+
+# Make a data frame containing all necessary variables
+
+MechumsVA_WBET <- data.frame(MechumsVA_summary$water_year,
+                             MechumsVA_precip_summary$ave_prcp_mm,
+                             MechumsVA_summary$ave_runoff_mm)
+
+# Rename columns
+
+colnames(MechumsVA_WBET) <- c("water_year",
+                                 "ave_prcp_mm",
+                                 "ave_runoff_mm")
+
+# Compute for the ET
+
+MechumsVA_WBET$WBET <- MechumsVA_WBET$ave_prcp_mm - MechumsVA_WBET$ave_runoff_mm
+
+
+################################################################################
+
+# Flat River, North Carolina = FlatNC
+
+# Make a data frame containing all necessary variables
+
+FlatNC_WBET <- data.frame(FlatNC_summary$water_year,
+                          FlatNC_precip_summary$ave_prcp_mm,
+                          FlatNC_summary$ave_runoff_mm)
+
+# Rename columns
+
+colnames(FlatNC_WBET) <- c("water_year",
+                              "ave_prcp_mm",
+                              "ave_runoff_mm")
+
+# Compute for the ET
+
+FlatNC_WBET$WBET <- FlatNC_WBET$ave_prcp_mm - FlatNC_WBET$ave_runoff_mm
+
+
+################################################################################
+
+# North Fork Edisto, South Carolina = NorthForkSC
+
+# Make a data frame containing all necessary variables
+
+NorthForkSC_WBET <- data.frame(NorthForkSC_summary$water_year,
+                               NorthForkSC_precip_summary$ave_prcp_mm,
+                               NorthForkSC_summary$ave_runoff_mm)
+
+# Rename columns
+
+colnames(NorthForkSC_WBET) <- c("water_year",
+                           "ave_prcp_mm",
+                           "ave_runoff_mm")
+
+# Compute for the ET
+
+NorthForkSC_WBET$WBET <- NorthForkSC_WBET$ave_prcp_mm - NorthForkSC_WBET$ave_runoff_mm
+
+
+################################################################################
+
+# Ichawaynochaway, Georgia = IchawayGA
+
+# Make a data frame containing all necessary variables
+
+IchawayGA_WBET <- data.frame(IchawayGA_summary$water_year,
+                             IchawayGA_precip_summary$ave_prcp_mm,
+                             IchawayGA_summary$ave_runoff_mm)
+
+# Rename columns
+
+colnames(IchawayGA_WBET) <- c("water_year",
+                                "ave_prcp_mm",
+                                "ave_runoff_mm")
+
+# Compute for the ET
+
+IchawayGA_WBET$WBET <- IchawayGA_WBET$ave_prcp_mm - IchawayGA_WBET$ave_runoff_mm
+
+
+
+################################################################################
+
+# FINAL DATA FRAMES OF WATER-BALANCE ET (WBET)
+
+OysterNH_WBET
+WappingerNY_WBET
+BrandywinePA_WBET
+MechumsVA_WBET
+FlatNC_WBET
+NorthForkSC_WBET
+IchawayGA_WBET 
 
