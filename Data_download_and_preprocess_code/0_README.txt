@@ -2,36 +2,47 @@
 CEE 609 Project
 FILE STRUCTURE
 
+0_Important_changes.txt
+= important changes in the project
+
 0_README.txt
 = instructions
+
 
 1_water_balance_ET.R
 = R script for the data download and pre-process code for computing evapotranspiration using water balance method
 
+
 2_watershed_boundaries.R
 = R script for extracting the watershed boundaries of the study areas
 
+
 3_remote_sensed_ET.R
-= R script for the data download and pre-process code for remote-sensed evapotranspiration and other variables
+= R script for the data download and pre-process code of remote-sensed evapotranspiration 
 
-4_remote_sensed_data.ipynb
-= Jupyter notebook for downloading PET data and other remote-sensed data
 
-5_combined_data
-= Jupyter notebook of the final data frames
+4_remote_sensed_predictors.R
+= R script for the data download and pre-process code of predictors
+
+
+5_combined_data.R
+= R script for combining the necessary data into a single data frame
+
 
 
 Others:
-6_Sample_code_EE
-= sample Java script for accessing evapotranspiration data through code.earthengine.google.com
-*** does not work as intended yet
+
+6_NorthForkSC_watershed_download.txt
+= the package used (USGS StreamStats) to download the watershed boundaries does not work (for some unknown reasons) for this site. This .txt file contains the instructions on how to download the shape file from the USGS StreamStats website.
+
 
 
 NOTES:
 
-1. These R scripts must be ran in order so that the variables/dataframes created are available in the environment for the next step of pre-processing.
+1. These R scripts must be ran in order so that the variables/data frames/functions created are available in the environment for the next step of pre-processing.
 
-2. Precipitation data
+
+2. Precipitation data for water balance ET
 
 Precipitation data was obtained using the R package rnoaa
 Reference: https://docs.ropensci.org/rnoaa/

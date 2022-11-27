@@ -1,0 +1,39 @@
+
+IMPORTANT CHANGES TO THE PROJECT'S CONTENTS AND DIRECTION:
+
+Important note:
+
+Data download were done per watershed in order to be able to easily diagnose potential errors in the code and in the obtained data. This can later be optimized by using loops.
+
+Period covered:
+1989-10-01
+2020-09-30
+
+= 20 water years 
+
+This can later be extended to improve the model.
+
+
+
+
+A. SOURCES OF DATA
+
+1. Due to data availability and access, the main source of remote-sensed data has been changed to:
+TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho (https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description)
+
+2. In case retrieval of watershed boundary fails using USGS's StreamStats functions in R, the watershed boundaries have been saved in the data folder.
+
+
+B. DATA ANALYSIS
+
+1. The actual evapotranspiration data obtained from the data set mentioned seems to be way higher than the computed evapotranspiration using the water balance method. Total annual ET from remote sensed data is about 10x higher than the water balance method. ** to confirm if scale = 0.1 means that the values have to be multiplied by 0.1 (this will bring the numbers down and closer to evapotranspiration computed using water balance method)
+
+
+2. To maximize the data available from TerraClimate, the predictors are now as follows:
+a. precipitation (mm)
+b. reference evapotranspiration/pet (mm)
+c. soil moisture (mm)
+d. maximum temperature (deg C)
+
+and
+e. NDVI (from Landsat data) ** still working on this as of November 27, 2022

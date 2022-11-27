@@ -63,6 +63,8 @@ writeShapefile(watershed = OysterNH_ws, layer = "OysterNH",
 
 # Wappinger Creek, New York = WappingerNY
 
+setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
+
 WappingerNY_ws <- delineateWatershed(xlocation = WappingerNY_SiteInfo$dec_long_va, 
                                   ylocation = WappingerNY_SiteInfo$dec_lat_va, 
                                   crs = 4326, 
@@ -76,13 +78,15 @@ leafletWatershed(WappingerNY_ws)
 # Write shapefile
 
 writeShapefile(watershed = WappingerNY_ws, layer = "WappingerNY", 
-               dir = "WappingerNY_ws", # saves the shapefile in the home folder of the user 
+               dir = "WappingerNY_ws", # saves the shapefile in the home folder of the user or in the set working directory
                what = "boundary")
 
 
 ################################################################################
 
 # Brandywine Creek, Pennsylvania = BrandywinePA
+
+setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
 
 BrandywinePA_ws <- delineateWatershed(xlocation = BrandywinePA_SiteInfo$dec_long_va, 
                                      ylocation = BrandywinePA_SiteInfo$dec_lat_va, 
@@ -97,13 +101,15 @@ leafletWatershed(BrandywinePA_ws)
 # Write shapefile
 
 writeShapefile(watershed = BrandywinePA_ws, layer = "BrandywinePA", 
-               dir = "BrandywinePA_ws", # saves the shapefile in the home folder of the user 
+               dir = "BrandywinePA_ws", # saves the shapefile in the home folder of the user or in the set working directory
                what = "boundary")
 
 
 ################################################################################
 
 # Mechums River, Virginia = MechumsVA
+
+setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
 
 MechumsVA_ws <- delineateWatershed(xlocation = MechumsVA_SiteInfo$dec_long_va, 
                                       ylocation = MechumsVA_SiteInfo$dec_lat_va, 
@@ -118,7 +124,7 @@ leafletWatershed(MechumsVA_ws)
 # Write shapefile
 
 writeShapefile(watershed = MechumsVA_ws, layer = "MechumsVA", 
-               dir = "MechumsVA_ws", # saves the shapefile in the home folder of the user 
+               dir = "MechumsVA_ws", # saves the shapefile in the home folder of the user or in the set working directory
                what = "boundary")
 
 
@@ -126,13 +132,14 @@ writeShapefile(watershed = MechumsVA_ws, layer = "MechumsVA",
 
 # Flat River, North Carolina = FlatNC
 
+setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
+
 FlatNC_ws <- delineateWatershed(xlocation = FlatNC_SiteInfo$dec_long_va, 
                                    ylocation = FlatNC_SiteInfo$dec_lat_va, 
                                    crs = 4326, 
                                    includeparameters = "true", 
                                    includeflowtypes = "true")
 
-setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
 
 # Visualize
 
@@ -141,21 +148,25 @@ leafletWatershed(FlatNC_ws)
 # Write shapefile
 
 writeShapefile(watershed = FlatNC_ws, layer = "FlatNC", 
-               dir = "FlatNC_ws", # saves the shapefile in the home folder of the user 
+               dir = "FlatNC_ws", # saves the shapefile in the home folder of the user or in the set working directory
                what = "boundary")
 
 
 ################################################################################
 
-# North Fork Edisto, South Carolina = NorthForkSC       # DOES NOT WORK PROPERLY FOR SOME REASON (as of Nov 13, 2022)
+# North Fork Edisto, South Carolina = NorthForkSC       
+
+# WARNING:
+# DOES NOT WORK PROPERLY FOR SOME REASON (as of Nov 13, 2022; still not working as of Nov 26, 2022)
+# Please see text NorthForkSC_watershed_download.txt for alternative way to obtain the watershed boundary of this site
+
+setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
 
 NorthForkSC_ws <- delineateWatershed(xlocation = NorthForkSC_SiteInfo$dec_long_va, 
                                 ylocation = NorthForkSC_SiteInfo$dec_lat_va, 
                                 crs = 4326, 
                                 includeparameters = "true", 
                                 includeflowtypes = "true")
-
-# setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
 
 # Visualize
 
@@ -164,13 +175,15 @@ leafletWatershed(NorthForkSC_ws)
 # Write shapefile
 
 writeShapefile(watershed = NorthForkSC_ws, layer = "NorthForkSC", 
-               dir = "NorthForkSC_ws", # saves the shapefile in the home folder of the user 
+               dir = "NorthForkSC_ws", # saves the shapefile in the home folder of the user or in the set working directory
                what = "boundary")
 
 
 ################################################################################
 
 # Ichawaynochaway, Georgia = IchawayGA
+
+setTimeout(1000) # in seconds; can be set when timeout is reached before a result is returned
 
 IchawayGA_ws <- delineateWatershed(xlocation = IchawayGA_SiteInfo$dec_long_va, 
                                      ylocation = IchawayGA_SiteInfo$dec_lat_va, 
@@ -187,6 +200,6 @@ leafletWatershed(IchawayGA_ws)
 # Write shapefile
 
 writeShapefile(watershed = IchawayGA_ws, layer = "IchawayGA", 
-               dir = "IchawayGA_ws", # saves the shapefile in the home folder of the user 
+               dir = "IchawayGA_ws", # saves the shapefile in the home folder of the user or in the set working directory
                what = "boundary")
 

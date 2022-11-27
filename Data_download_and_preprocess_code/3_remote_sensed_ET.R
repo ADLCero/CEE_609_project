@@ -5,6 +5,10 @@
 
 # REMOTE-SENSED EVAPOTRANSPIRATION
 
+# IMPORTANT NOTE: This script will only work if the previous script on downloading watershed boundaries
+# have been ran.
+
+
 # Source: TerraClimate: Monthly Climate and Climatic Water Balance for Global 
 # Terrestrial Surfaces, University of Idaho
 # Reference: https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description
@@ -41,6 +45,17 @@ DailyAET <- function(date, aet){
   
 }
 
+
+# Assigning the water year to each date
+# where: date = array/ column containing the date in YMD format produced using 
+# lubridate package
+
+WaterYear <- function(date) {
+  ifelse (month(date) < 10, year(date), year(date) + 1)
+}
+
+# Note: This function should already be available in the environment since it was used in a previous script
+
 ################################################################################
 
 # Initialize the Earth Engine R API
@@ -53,9 +68,7 @@ ee_Initialize()
 
 # Read the shapefile
 
-# OysterNH_ws <- st_read(system.file("Users/amyeldalecero/OysterNH_ws/OysterNH.shp", package = "sf"), quiet = TRUE)
-
-OysterNH_ws <- st_read("/Users/amyeldalecero/OysterNH_ws/OysterNH.shp", quiet = TRUE)
+OysterNH_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/OysterNH_ws/OysterNH.shp", quiet = TRUE)
 
 
 # Map each image to extract the monthly actual evapotranspiration 
@@ -65,8 +78,7 @@ OysterNH_ws <- st_read("/Users/amyeldalecero/OysterNH_ws/OysterNH.shp", quiet = 
 terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
-  ee$ImageCollection$toBands() #%>% # from imagecollection to image
-  #ee$Image$rename(sprintf("PP_%02d",1:372)) # rename the bands of an image
+  ee$ImageCollection$toBands() # from imagecollection to image
 
 
 # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
@@ -128,7 +140,7 @@ OysterNH_aet_summary <- OysterNH_aet2 %>%
 
 # Read the shapefile
 
-WappingerNY_ws <- st_read("/Users/amyeldalecero/WappingerNY_ws/WappingerNY.shp", quiet = TRUE)
+WappingerNY_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/WappingerNY_ws/WappingerNY.shp", quiet = TRUE)
 
 
 # Map each image to extract the monthly actual evapotranspiration 
@@ -138,8 +150,7 @@ WappingerNY_ws <- st_read("/Users/amyeldalecero/WappingerNY_ws/WappingerNY.shp",
 terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
-  ee$ImageCollection$toBands() #%>% # from imagecollection to image
-#ee$Image$rename(sprintf("PP_%02d",1:372)) # rename the bands of an image
+  ee$ImageCollection$toBands() # from imagecollection to image
 
 
 # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
@@ -201,7 +212,7 @@ WappingerNY_aet_summary <- WappingerNY_aet2 %>%
 
 # Read the shapefile
 
-BrandywinePA_ws <- st_read("/Users/amyeldalecero/BrandywinePA_ws/BrandywinePA.shp", quiet = TRUE)
+BrandywinePA_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/BrandywinePA_ws/BrandywinePA.shp", quiet = TRUE)
 
 
 # Map each image to extract the monthly actual evapotranspiration 
@@ -212,7 +223,6 @@ terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
   ee$ImageCollection$toBands() # from imagecollection to image
-
 
 
 # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
@@ -274,7 +284,7 @@ BrandywinePA_aet_summary <- BrandywinePA_aet2 %>%
 
 # Read the shapefile
 
-MechumsVA_ws <- st_read("/Users/amyeldalecero/MechumsVA_ws/MechumsVA.shp", quiet = TRUE)
+MechumsVA_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/MechumsVA_ws/MechumsVA.shp", quiet = TRUE)
 
 
 # Map each image to extract the monthly actual evapotranspiration 
@@ -285,7 +295,6 @@ terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
   ee$ImageCollection$toBands() # from imagecollection to image
-
 
 
 # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
@@ -347,7 +356,7 @@ MechumsVA_aet_summary <- MechumsVA_aet2 %>%
 
 # Read the shapefile
 
-FlatNC_ws <- st_read("/Users/amyeldalecero/FlatNC_ws/FlatNC.shp", quiet = TRUE)
+FlatNC_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/FlatNC_ws/FlatNC.shp", quiet = TRUE)
 
 
 # Map each image to extract the monthly actual evapotranspiration 
@@ -358,7 +367,6 @@ terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
   ee$ImageCollection$toBands() # from imagecollection to image
-
 
 
 # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
@@ -416,77 +424,74 @@ FlatNC_aet_summary <- FlatNC_aet2 %>%
 
 ################################################################################
 
-# # DO NOT RUN CODE FOR THIS SITE FOR NOW SINCE WATERSHED BOUNDARIES ARE NOT BEING RETRIEVED USING THE PREVIOUS SCRIPT
-# 
-# # North Fork Edisto, South Carolina = NorthForkSC
-# 
-# # Read the shapefile
-# 
-# NorthForkSC_ws <- st_read("/Users/amyeldalecero/NorthForkSC_ws/NorthForkSC.shp", quiet = TRUE)
-# 
-# 
-# # Map each image to extract the monthly actual evapotranspiration 
-# # derived using one-dimensional soil water balance model
-# # from the Terraclimate dataset
-# 
-# terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
-#   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
-#   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
-#   ee$ImageCollection$toBands() # from imagecollection to image
-# 
-# 
-# 
-# # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
-# # Need to define: 
-# # the ImageCollection object (x), 
-# # the geometry (y), and 
-# # a function to summarize the values (fun).
-# 
-# NorthForkSC_aet <- ee_extract(x = terraclimate, y = NorthForkSC_ws$geometry, sf = FALSE)
-# 
-# # Convert columns to rows
-# 
-# NorthForkSC_aet2 <- as.data.frame(t(NorthForkSC_aet))
-# 
-# 
-# # Convert row names into a column
-# 
-# NorthForkSC_aet2$time <- rownames(NorthForkSC_aet2)
-# 
-# 
-# # Remove the first row
-# 
-# NorthForkSC_aet2 <- as.data.frame(NorthForkSC_aet2[2:nrow(NorthForkSC_aet2), ])
-# 
-# 
-# # Rename column names
-# 
-# colnames(NorthForkSC_aet2) <- c("monthly_aet", "time")
-# 
-# 
-# # Make date column (assume that each month starts at 01)
-# 
-# NorthForkSC_aet2$time <- gsub('[X_aet]', '', NorthForkSC_aet2$time)  # removes unnecessary characters
-# NorthForkSC_aet2$date <- ym(NorthForkSC_aet2$time)
-# 
-# 
-# # Add water year
-# 
-# NorthForkSC_aet2$water_year <- WaterYear(NorthForkSC_aet2$date)
-# 
-# 
-# # Convert monthly aet to daily aet
-# 
-# NorthForkSC_aet2$daily_aet <- DailyAET(NorthForkSC_aet2$date, NorthForkSC_aet2$monthly_aet)
-# 
-# 
-# # Group by water year and summarize data
-# 
-# NorthForkSC_aet_summary <- NorthForkSC_aet2 %>% 
-#   group_by(water_year) %>% 
-#   summarize(total_annual_aet = sum(monthly_aet, na.rm =TRUE),
-#             ave_monthly_aet = mean(monthly_aet, na.rm = TRUE),
-#             ave_daily_aet = mean(daily_aet, na.rm = TRUE))
+# North Fork Edisto, South Carolina = NorthForkSC
+
+# Read the shapefile
+
+NorthForkSC_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/NorthForkSC_ws/NorthForkSC.shp", quiet = TRUE)
+
+
+# Map each image to extract the monthly actual evapotranspiration
+# derived using one-dimensional soil water balance model
+# from the Terraclimate dataset
+
+terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
+  ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
+  ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
+  ee$ImageCollection$toBands() # from imagecollection to image
+
+
+# Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract
+# Need to define:
+# the ImageCollection object (x),
+# the geometry (y), and
+# a function to summarize the values (fun).
+
+NorthForkSC_aet <- ee_extract(x = terraclimate, y = NorthForkSC_ws$geometry, sf = FALSE)
+
+# Convert columns to rows
+
+NorthForkSC_aet2 <- as.data.frame(t(NorthForkSC_aet))
+
+
+# Convert row names into a column
+
+NorthForkSC_aet2$time <- rownames(NorthForkSC_aet2)
+
+
+# Remove the first row
+
+NorthForkSC_aet2 <- as.data.frame(NorthForkSC_aet2[2:nrow(NorthForkSC_aet2), ])
+
+
+# Rename column names
+
+colnames(NorthForkSC_aet2) <- c("monthly_aet", "time")
+
+
+# Make date column (assume that each month starts at 01)
+
+NorthForkSC_aet2$time <- gsub('[X_aet]', '', NorthForkSC_aet2$time)  # removes unnecessary characters
+NorthForkSC_aet2$date <- ym(NorthForkSC_aet2$time)
+
+
+# Add water year
+
+NorthForkSC_aet2$water_year <- WaterYear(NorthForkSC_aet2$date)
+
+
+# Convert monthly aet to daily aet
+
+NorthForkSC_aet2$daily_aet <- DailyAET(NorthForkSC_aet2$date, NorthForkSC_aet2$monthly_aet)
+
+
+# Group by water year and summarize data
+
+NorthForkSC_aet_summary <- NorthForkSC_aet2 %>%
+  group_by(water_year) %>%
+  summarize(total_annual_aet = sum(monthly_aet, na.rm =TRUE),
+            ave_monthly_aet = mean(monthly_aet, na.rm = TRUE),
+            ave_daily_aet = mean(daily_aet, na.rm = TRUE))
 
 
 ################################################################################
@@ -495,7 +500,7 @@ FlatNC_aet_summary <- FlatNC_aet2 %>%
 
 # Read the shapefile
 
-IchawayGA_ws <- st_read("/Users/amyeldalecero/IchawayGA_ws/IchawayGA.shp", quiet = TRUE)
+IchawayGA_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/IchawayGA_ws/IchawayGA.shp", quiet = TRUE)
 
 
 # Map each image to extract the monthly actual evapotranspiration 
@@ -506,7 +511,6 @@ terraclimate <- ee$ImageCollection("IDAHO_EPSCOR/TERRACLIMATE") %>%
   ee$ImageCollection$filterDate("1989-10-01", "2020-09-30") %>%
   ee$ImageCollection$map(function(x) x$select("aet")) %>% # Select only actual evapotranspiration bands
   ee$ImageCollection$toBands() # from imagecollection to image
-
 
 
 # Extract monthly actual evapotranspiration values from the Terraclimate ImageCollection through ee_extract

@@ -1,0 +1,32 @@
+
+ALTERNATIVE DOWNLOAD PROCESS FOR WATERSHED BOUNDARY OF NORTH FORK EDISTO,
+SOUTH CAROLINA
+
+USGS Site No. 02173500
+
+1. Go to streamstats.usgs.gov/ss
+
+2. Inside the box for 'Search for a place' in the left-hand side of the screen, type in the USGS Site No. of the stream:
+02173500
+
+3. Select the suggested site. It should be 02173500 NORTH FORK EDISTO RIVER AT ORANGEBURG, SC
+
+4. The screen will bring the user to the selected site.
+
+5. On the left-hand side of the screen, select 'South Carolina' to set the State or Regional Study Area. This will enable the Delineate button.
+
+6. Click the 'Delineate' button to activate the delineation tool.
+
+7. Select a blue cell on the screen (represents the stream) that is close to the identified USGS site.
+
+8. After delineation is complete, select 'Download Basin' and then download as Shapefile.
+
+9. The file will be downloaded as 'download.zip' folder. Locate this in the local computer and unzip the folder.
+
+10. Inside the folder, there will be a layers folder and a Disclaimer.txt.
+
+11. Rename the layers folder as 'NorthForkSC_ws' and all the  'globalwatershed'layers inside it as 'NorthForkSC'. Be careful to retain the file extension (i.e., .dbf, .prj, etc)
+
+12. Delete the globalwatershedpoint layers.
+
+12. Move the NorthForkSC_ws folder to the appropriate directory for the project.

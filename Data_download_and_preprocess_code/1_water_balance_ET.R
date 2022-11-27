@@ -138,11 +138,14 @@ OysterNH$runoff_mm <- RunoffDepth(OysterNH$flow_m3s, OysterNH_area_m2)
 
 OysterNH$water_year <- WaterYear(OysterNH$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 OysterNH_summary <- OysterNH %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -194,11 +197,14 @@ WappingerNY$runoff_mm <- RunoffDepth(WappingerNY$flow_m3s, WappingerNY_area_m2)
 
 WappingerNY$water_year <- WaterYear(WappingerNY$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 WappingerNY_summary <- WappingerNY %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -249,11 +255,14 @@ BrandywinePA$runoff_mm <- RunoffDepth(BrandywinePA$flow_m3s, BrandywinePA_area_m
 
 BrandywinePA$water_year <- WaterYear(BrandywinePA$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 BrandywinePA_summary <- BrandywinePA %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -304,11 +313,14 @@ MechumsVA$runoff_mm <- RunoffDepth(MechumsVA$flow_m3s, MechumsVA_area_m2)
 
 MechumsVA$water_year <- WaterYear(MechumsVA$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 MechumsVA_summary <- MechumsVA %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -359,11 +371,14 @@ FlatNC$runoff_mm <- RunoffDepth(FlatNC$flow_m3s, FlatNC_area_m2)
 
 FlatNC$water_year <- WaterYear(FlatNC$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 FlatNC_summary <- FlatNC %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -414,11 +429,14 @@ NorthForkSC$runoff_mm <- RunoffDepth(NorthForkSC$flow_m3s, NorthForkSC_area_m2)
 
 NorthForkSC$water_year <- WaterYear(NorthForkSC$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 NorthForkSC_summary <- NorthForkSC %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -469,11 +487,14 @@ IchawayGA$runoff_mm <- RunoffDepth(IchawayGA$flow_m3s, IchawayGA_area_m2)
 
 IchawayGA$water_year <- WaterYear(IchawayGA$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 IchawayGA_summary <- IchawayGA %>% 
   group_by(water_year) %>% 
-  summarize(ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
+  summarize(total_flow_cfs = sum(flow_cfs, na.rm = TRUE),
+            total_flow_m3s = sum(flow_m3s, na.rm = TRUE),
+            total_runoff_mm = sum(runoff_mm, na.rm = TRUE),
+            ave_flow_cfs = mean(flow_cfs, na.rm = TRUE),
             ave_flow_m3s = mean(flow_m3s, na.rm = TRUE),
             ave_runoff_mm = mean(runoff_mm, na.rm = TRUE))
 
@@ -541,11 +562,13 @@ OysterNH_precip$prcp_mm <- OysterNH_precip$prcp / 10
 
 OysterNH_precip$water_year <- WaterYear(OysterNH_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 OysterNH_precip_summary <- OysterNH_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -589,11 +612,13 @@ WappingerNY_precip$prcp_mm <- WappingerNY_precip$prcp / 10
 
 WappingerNY_precip$water_year <- WaterYear(WappingerNY_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 WappingerNY_precip_summary <- WappingerNY_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -637,11 +662,13 @@ BrandywinePA_precip$prcp_mm <- BrandywinePA_precip$prcp / 10
 
 BrandywinePA_precip$water_year <- WaterYear(BrandywinePA_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 BrandywinePA_precip_summary <- BrandywinePA_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -685,11 +712,13 @@ MechumsVA_precip$prcp_mm <- MechumsVA_precip$prcp / 10
 
 MechumsVA_precip$water_year <- WaterYear(MechumsVA_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 MechumsVA_precip_summary <- MechumsVA_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -733,11 +762,13 @@ FlatNC_precip$prcp_mm <- FlatNC_precip$prcp / 10
 
 FlatNC_precip$water_year <- WaterYear(FlatNC_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 FlatNC_precip_summary <- FlatNC_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -781,11 +812,13 @@ NorthForkSC_precip$prcp_mm <- NorthForkSC_precip$prcp / 10
 
 NorthForkSC_precip$water_year <- WaterYear(NorthForkSC_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 NorthForkSC_precip_summary <- NorthForkSC_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -829,11 +862,13 @@ IchawayGA_precip$prcp_mm <- IchawayGA_precip$prcp / 10
 
 IchawayGA_precip$water_year <- WaterYear(IchawayGA_precip$date)
 
-# Group data by water year, summarize by getting the mean values per year
+# Group data by water year, summarize by getting the total values per year
 
 IchawayGA_precip_summary <- IchawayGA_precip %>% 
   group_by(water_year) %>% 
-  summarize(ave_prcp = mean(prcp, na.rm = TRUE),
+  summarize(total_prcp = sum(prcp, na.rm = TRUE),
+            total_prcp_mm = sum(prcp_mm, na.rm = TRUE),
+            ave_prcp = mean(prcp, na.rm = TRUE),
             ave_prcp_mm = mean(prcp_mm, na.rm = TRUE))
 
 
@@ -843,7 +878,7 @@ IchawayGA_precip_summary <- IchawayGA_precip %>%
 
 # COMPUTATION OF EVAPOTRANSPIRATION USING WATER-BALANCE APPROACH
 
-# mean basin precipitation (mm) minus basin runoff (mm, normalized by drainage area)
+# total basin precipitation (mm) minus basin runoff (mm, normalized by drainage area)
 
 
 ################################################################################
@@ -853,18 +888,25 @@ IchawayGA_precip_summary <- IchawayGA_precip %>%
 # Make a data frame containing all necessary variables
 
 OysterNH_WBET <- data.frame(OysterNH_summary$water_year,
+                            OysterNH_precip_summary$total_prcp_mm,
+                            OysterNH_summary$total_runoff_mm,
                             OysterNH_precip_summary$ave_prcp_mm,
                             OysterNH_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(OysterNH_WBET) <- c("water_year",
+                             "total_prcp_mm",
+                             "total_runoff_mm",
                              "ave_prcp_mm",
                              "ave_runoff_mm")
 
 # Compute for the ET
 
-OysterNH_WBET$WBET <- OysterNH_WBET$ave_prcp_mm - OysterNH_WBET$ave_runoff_mm
+OysterNH_WBET$WBET_annual_total <- OysterNH_WBET$total_prcp_mm - OysterNH_WBET$total_runoff_mm
+OysterNH_WBET$WBET_ave <- OysterNH_WBET$ave_prcp_mm - OysterNH_WBET$ave_runoff_mm
+
+View(OysterNH_WBET)
 
 
 ################################################################################
@@ -874,19 +916,25 @@ OysterNH_WBET$WBET <- OysterNH_WBET$ave_prcp_mm - OysterNH_WBET$ave_runoff_mm
 # Make a data frame containing all necessary variables
 
 WappingerNY_WBET <- data.frame(WappingerNY_summary$water_year,
+                               WappingerNY_precip_summary$total_prcp_mm,
+                               WappingerNY_summary$total_runoff_mm,
                                WappingerNY_precip_summary$ave_prcp_mm,
                                WappingerNY_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(WappingerNY_WBET) <- c("water_year",
+                             "total_prcp_mm",
+                             "total_runoff_mm",
                              "ave_prcp_mm",
                              "ave_runoff_mm")
 
 # Compute for the ET
 
-WappingerNY_WBET$WBET <- WappingerNY_WBET$ave_prcp_mm - WappingerNY_WBET$ave_runoff_mm
+WappingerNY_WBET$WBET_annual_total <- WappingerNY_WBET$total_prcp_mm - WappingerNY_WBET$total_runoff_mm
+WappingerNY_WBET$WBET_ave <- WappingerNY_WBET$ave_prcp_mm - WappingerNY_WBET$ave_runoff_mm
 
+View(WappingerNY_WBET)
 
 ################################################################################
 
@@ -895,18 +943,26 @@ WappingerNY_WBET$WBET <- WappingerNY_WBET$ave_prcp_mm - WappingerNY_WBET$ave_run
 # Make a data frame containing all necessary variables
 
 BrandywinePA_WBET <- data.frame(BrandywinePA_summary$water_year,
+                                BrandywinePA_precip_summary$total_prcp_mm,
+                                BrandywinePA_summary$total_runoff_mm,
                                 BrandywinePA_precip_summary$ave_prcp_mm,
                                 BrandywinePA_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(BrandywinePA_WBET) <- c("water_year",
+                                "total_prcp_mm",
+                                "total_runoff_mm",
                                 "ave_prcp_mm",
                                 "ave_runoff_mm")
 
 # Compute for the ET
 
-BrandywinePA_WBET$WBET <- BrandywinePA_WBET$ave_prcp_mm - BrandywinePA_WBET$ave_runoff_mm
+BrandywinePA_WBET$WBET_annual_total <- BrandywinePA_WBET$total_prcp_mm - BrandywinePA_WBET$total_runoff_mm
+BrandywinePA_WBET$WBET_ave <- BrandywinePA_WBET$ave_prcp_mm - BrandywinePA_WBET$ave_runoff_mm
+
+View(BrandywinePA_WBET)
+
 
 
 ################################################################################
@@ -916,18 +972,26 @@ BrandywinePA_WBET$WBET <- BrandywinePA_WBET$ave_prcp_mm - BrandywinePA_WBET$ave_
 # Make a data frame containing all necessary variables
 
 MechumsVA_WBET <- data.frame(MechumsVA_summary$water_year,
+                             MechumsVA_precip_summary$total_prcp_mm,
+                             MechumsVA_summary$total_runoff_mm,
                              MechumsVA_precip_summary$ave_prcp_mm,
                              MechumsVA_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(MechumsVA_WBET) <- c("water_year",
+                                 "total_prcp_mm",
+                                 "total_runoff_mm",
                                  "ave_prcp_mm",
                                  "ave_runoff_mm")
 
 # Compute for the ET
 
-MechumsVA_WBET$WBET <- MechumsVA_WBET$ave_prcp_mm - MechumsVA_WBET$ave_runoff_mm
+MechumsVA_WBET$WBET_annual_total <- MechumsVA_WBET$total_prcp_mm - MechumsVA_WBET$total_runoff_mm
+MechumsVA_WBET$WBET_ave <- MechumsVA_WBET$ave_prcp_mm - MechumsVA_WBET$ave_runoff_mm
+
+View(MechumsVA_WBET)
+
 
 
 ################################################################################
@@ -937,18 +1001,25 @@ MechumsVA_WBET$WBET <- MechumsVA_WBET$ave_prcp_mm - MechumsVA_WBET$ave_runoff_mm
 # Make a data frame containing all necessary variables
 
 FlatNC_WBET <- data.frame(FlatNC_summary$water_year,
-                          FlatNC_precip_summary$ave_prcp_mm,
-                          FlatNC_summary$ave_runoff_mm)
+                             FlatNC_precip_summary$total_prcp_mm,
+                             FlatNC_summary$total_runoff_mm,
+                             FlatNC_precip_summary$ave_prcp_mm,
+                             FlatNC_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(FlatNC_WBET) <- c("water_year",
+                              "total_prcp_mm",
+                              "total_runoff_mm",
                               "ave_prcp_mm",
                               "ave_runoff_mm")
 
 # Compute for the ET
 
-FlatNC_WBET$WBET <- FlatNC_WBET$ave_prcp_mm - FlatNC_WBET$ave_runoff_mm
+FlatNC_WBET$WBET_annual_total <- FlatNC_WBET$total_prcp_mm - FlatNC_WBET$total_runoff_mm
+FlatNC_WBET$WBET_ave <- FlatNC_WBET$ave_prcp_mm - FlatNC_WBET$ave_runoff_mm
+
+View(FlatNC_WBET)
 
 
 ################################################################################
@@ -958,18 +1029,25 @@ FlatNC_WBET$WBET <- FlatNC_WBET$ave_prcp_mm - FlatNC_WBET$ave_runoff_mm
 # Make a data frame containing all necessary variables
 
 NorthForkSC_WBET <- data.frame(NorthForkSC_summary$water_year,
-                               NorthForkSC_precip_summary$ave_prcp_mm,
-                               NorthForkSC_summary$ave_runoff_mm)
+                             NorthForkSC_precip_summary$total_prcp_mm,
+                             NorthForkSC_summary$total_runoff_mm,
+                             NorthForkSC_precip_summary$ave_prcp_mm,
+                             NorthForkSC_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(NorthForkSC_WBET) <- c("water_year",
-                           "ave_prcp_mm",
-                           "ave_runoff_mm")
+                              "total_prcp_mm",
+                              "total_runoff_mm",
+                              "ave_prcp_mm",
+                              "ave_runoff_mm")
 
 # Compute for the ET
 
-NorthForkSC_WBET$WBET <- NorthForkSC_WBET$ave_prcp_mm - NorthForkSC_WBET$ave_runoff_mm
+NorthForkSC_WBET$WBET_annual_total <- NorthForkSC_WBET$total_prcp_mm - NorthForkSC_WBET$total_runoff_mm
+NorthForkSC_WBET$WBET_ave <- NorthForkSC_WBET$ave_prcp_mm - NorthForkSC_WBET$ave_runoff_mm
+
+View(NorthForkSC_WBET)
 
 
 ################################################################################
@@ -979,18 +1057,25 @@ NorthForkSC_WBET$WBET <- NorthForkSC_WBET$ave_prcp_mm - NorthForkSC_WBET$ave_run
 # Make a data frame containing all necessary variables
 
 IchawayGA_WBET <- data.frame(IchawayGA_summary$water_year,
+                             IchawayGA_precip_summary$total_prcp_mm,
+                             IchawayGA_summary$total_runoff_mm,
                              IchawayGA_precip_summary$ave_prcp_mm,
                              IchawayGA_summary$ave_runoff_mm)
 
 # Rename columns
 
 colnames(IchawayGA_WBET) <- c("water_year",
-                                "ave_prcp_mm",
-                                "ave_runoff_mm")
+                              "total_prcp_mm",
+                              "total_runoff_mm",
+                              "ave_prcp_mm",
+                              "ave_runoff_mm")
 
 # Compute for the ET
 
-IchawayGA_WBET$WBET <- IchawayGA_WBET$ave_prcp_mm - IchawayGA_WBET$ave_runoff_mm
+IchawayGA_WBET$WBET_annual_total <- IchawayGA_WBET$total_prcp_mm - IchawayGA_WBET$total_runoff_mm
+IchawayGA_WBET$WBET_ave <- IchawayGA_WBET$ave_prcp_mm - IchawayGA_WBET$ave_runoff_mm
+
+View(IchawayGA_WBET)
 
 
 
