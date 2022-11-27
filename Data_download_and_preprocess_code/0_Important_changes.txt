@@ -9,7 +9,7 @@ Period covered:
 1989-10-01
 2020-09-30
 
-= 20 water years 
+= 31 water years 
 
 This can later be extended to improve the model.
 

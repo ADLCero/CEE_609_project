@@ -1,0 +1,15 @@
+
+IMPORTANT CHANGES TO THE PROJECT'S CONTENTS AND DIRECTION:
+
+
+Statistical model: multivariate regression (multiple linear regression)
+
+Training data: water years 1990-2014 (25 water years)
+Testing data: water years 2015-2020 (6 water years)
+
+Model evaluation:
+1. Best subset regression (using leaps)
+2. Stepwise regression (using F test)
+3. Stepwise regression (using AIC and counterchecking with BIC)
+
+
