@@ -22,3 +22,9 @@ Repository for CEE 609: Environmental Data Science project, Fall 2022
 5. Flat River, North Carolina (USGS Site No.: 02085500)
 6. North Fork Edisto, South Carolina (USGS Site No.: 02173500)
 7. Ichawaynochaway, Georgia (USGS Site No.: 02353500)
+
+
+## Contents (Folders):
+
+1. **Data_download_and_preprocess_code**: scripts for downloading data
+2. **Model_train_and_validate_code**: script and data for formulating, fitting, and testing models for predicting evapotranspiration
