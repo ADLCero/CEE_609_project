@@ -276,6 +276,10 @@ r
 # r = 0.9857579 is greater than both values, therefore, fail to reject H0, residuals are normally distributed
 
 
+# Check autocorrelation function of residuals
+
+acf(res)
+
 #------------------------------------------------------------------------------#
 
 # USE THE "BEST" MODEL TO MAKE A PREDICTION FOR ACTUAL EVAPOTRANSPIRATION
