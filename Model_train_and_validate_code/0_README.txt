@@ -1,6 +1,9 @@
 
 MODEL TRAINING AND VALIDATION CODE
 
+0_Important_changes.txt
+= important changes on the methods for this section of the project
+
 0_README.txt
 = instructions
 
