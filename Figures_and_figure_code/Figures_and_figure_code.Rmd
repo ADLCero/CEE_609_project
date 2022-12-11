@@ -1,0 +1,11 @@
+---
+title: "Figures and Figure Code"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is an R Markdown document of the process done to generate figures for the project.
+
