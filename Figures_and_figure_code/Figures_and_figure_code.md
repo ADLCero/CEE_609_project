@@ -38,7 +38,7 @@ NorthForkSC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_a
 IchawayGA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_data.csv")
 ```
 
-### Plot: Annual water balance ET of each watershed
+### PLOT: Annual water balance ET of each watershed
 
 ``` r
 annual_WB_ET <- ggplot() +
@@ -83,14 +83,18 @@ annual_WB_ET
 computed using the water balance method
 
 ``` r
-# Export the plot as tiff
+# Export the plot as png
 
-ggsave(filename = "annual_WB_ET.tiff",
+ggsave(filename = "annual_WB_ET.png",
        plot = annual_WB_ET,
-       device = "tiff",
+       device = "png",
        path = 'data',
        width = 8,
        height = 4,
        units = "in",
        dpi = 200)
 ```
+
+ 
+
+### PLOT:

@@ -79,11 +79,11 @@ annual_WB_ET
 
 
 ```{r}
-# Export the plot as tiff
+# Export the plot as png
 
-ggsave(filename = "annual_WB_ET.tiff",
+ggsave(filename = "annual_WB_ET.png",
        plot = annual_WB_ET,
-       device = "tiff",
+       device = "png",
        path = 'data',
        width = 8,
        height = 4,
@@ -91,4 +91,6 @@ ggsave(filename = "annual_WB_ET.tiff",
        dpi = 200)
 ```
 
-###
+&nbsp;
+
+### PLOT: 
