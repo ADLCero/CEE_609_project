@@ -1,6 +1,6 @@
 ---
 title: "Figures and Figure Code"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
