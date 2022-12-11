@@ -79,6 +79,8 @@ annual_WB_ET
 ```
 
 ![](Figures_and_figure_code_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+ 
+
 **Caption:** Annual evapotranspiration from water years 1990-2020
 computed using the water balance method
 
@@ -88,7 +90,7 @@ computed using the water balance method
 ggsave(filename = "annual_WB_ET.png",
        plot = annual_WB_ET,
        device = "png",
-       path = 'data',
+       path = 'final_figures',
        width = 8,
        height = 4,
        units = "in",

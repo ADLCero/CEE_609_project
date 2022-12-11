@@ -20,7 +20,10 @@ Figures_and_figure_code.Rmd
 Figures_and_figure_code.md
 = Github document; should be the file viewed when the user wants to see the generated figures
 
-data
-= folder where the figure files are saved
+final_figures
+= folder where the final figure files are saved
+
+Figures_and_figure_code_files
+= folder automatically created by R to save the embedded images; IGNORE THIS FOLDER.
 
 

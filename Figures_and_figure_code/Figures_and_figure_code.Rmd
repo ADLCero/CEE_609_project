@@ -75,6 +75,8 @@ annual_WB_ET <- ggplot() +
 annual_WB_ET
 
 ```
+&nbsp;
+
 **Caption:** Annual evapotranspiration from water years 1990-2020 computed using the water balance method
 
 
@@ -84,7 +86,7 @@ annual_WB_ET
 ggsave(filename = "annual_WB_ET.png",
        plot = annual_WB_ET,
        device = "png",
-       path = 'data',
+       path = 'final_figures',
        width = 8,
        height = 4,
        units = "in",
