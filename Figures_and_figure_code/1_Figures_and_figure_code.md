@@ -67,6 +67,7 @@ annual_WB_ET <- ggplot() +
                                "Ichawaynochaway, GA")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
   
   labs(x = "water year",
        y = "annual water balance evapotranspiration (mm)") +
@@ -99,4 +100,274 @@ ggsave(filename = "annual_WB_ET.png",
 
  
 
-### PLOT:
+### PLOT: Annual precipitation
+
+``` r
+annual_RS_precip <- ggplot() +
+  geom_line(data = OysterNH_data, (aes(x = water_year, y = RS_annual_total_precip, color = "Oyster River, NH"))) +
+  geom_line(data = WappingerNY_data, (aes(x = water_year, y = RS_annual_total_precip, color = "Wappinger Creek, NY"))) +
+  geom_line(data = BrandywinePA_data, (aes(x = water_year, y = RS_annual_total_precip, color = "Brandywine Creek, PA"))) +
+  geom_line(data = MechumsVA_data, (aes(x = water_year, y = RS_annual_total_precip, color = "Mechums River, VA"))) +
+  geom_line(data = FlatNC_data, (aes(x = water_year, y = RS_annual_total_precip, color = "Flat River, NC"))) +
+  geom_line(data = NorthForkSC_data, (aes(x = water_year, y = RS_annual_total_precip, color = "North Fork Edisto, SC"))) +
+  geom_line(data = IchawayGA_data, (aes(x = water_year, y = RS_annual_total_precip, color = "Ichawaynochaway, GA"))) +
+  
+  scale_color_manual(name = "watershed",
+                     values = c("Oyster River, NH" = "#a6cee3",
+                                "Wappinger Creek, NY" = "#1f78b4",
+                                "Brandywine Creek, PA" = "#b2df8a",
+                                "Mechums River, VA" = "#33a02c",
+                                "Flat River, NC" = "#fb9a99",
+                                "North Fork Edisto, SC" = "#e31a1c",
+                                "Ichawaynochaway, GA" = "#fdbf6f"),
+                     breaks = c("Oyster River, NH",
+                               "Wappinger Creek, NY",
+                               "Brandywine Creek, PA",
+                               "Mechums River, VA",
+                               "Flat River, NC",
+                               "North Fork Edisto, SC",
+                               "Ichawaynochaway, GA")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(500, 2000, 500), limits = c(500, 2000)) +
+  
+  labs(x = "water year",
+       y = "annual total precipitation (mm)") +
+  
+  theme_bw() +
+  
+  theme(legend.title = element_text(face = "bold"))
+
+annual_RS_precip
+```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+**Caption:** Annual total precipitation from water years 1990-2020
+
+``` r
+# Export the plot as png
+
+ggsave(filename = "annual_RS_precip.png",
+       plot = annual_RS_precip,
+       device = "png",
+       path = '2_final_figures',
+       width = 8,
+       height = 4,
+       units = "in",
+       dpi = 200)
+```
+
+### PLOTS: Water balance ET vs remote-sensed ET
+
+``` r
+# Oyster NH
+
+OysterNH_ET <- ggplot(data = OysterNH_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#a6cee3",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "Oyster River, NH") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+
+# Wappinger NY
+
+WappingerNY_ET <- ggplot(data = WappingerNY_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#1f78b4",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "Wappinger Creek, NY") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+
+# Brandywine PA
+
+BrandywinePA_ET <- ggplot(data = BrandywinePA_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#b2df8a",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "Brandywine Creek, PA") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+
+# Mechums VA
+
+MechumsVA_ET <- ggplot(data = MechumsVA_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#33a02c",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "Mechums River, VA") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+
+# Flat NC
+
+FlatNC_ET <- ggplot(data = FlatNC_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#fb9a99",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "Flat River, NC") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+
+# NorthFork SC
+
+NorthForkSC_ET <- ggplot(data = NorthForkSC_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#e31a1c",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "North Fork Edisto, SC") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+
+# Ichaway GA
+
+IchawayGA_ET <- ggplot(data = IchawayGA_data) +
+  geom_line(aes(x = water_year, y = WB_annual_total_aet, color = "water balance ET")) +
+  geom_line(aes(x = water_year, y = (RS_annual_total_aet * 0.1), color = "remote-sensed ET")) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("water balance ET" = "#fdbf6f",
+                                "remote-sensed ET" = "black"),
+                     breaks = c("remote-sensed ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  
+  labs(title = "Ichawaynochaway, GA") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# Combine plots
+
+ET <- ggarrange(OysterNH_ET,
+          WappingerNY_ET,
+          BrandywinePA_ET,
+          MechumsVA_ET,
+          FlatNC_ET,
+          NorthForkSC_ET,
+          IchawayGA_ET,
+          ncol = 3,
+          nrow = 3, common.legend = TRUE)
+
+ET
+```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+``` r
+# Annotate figure
+
+ET_annotated <- annotate_figure(ET,
+                left = text_grob("annual evapotranspiration (mm)", rot = 90),
+                bottom = text_grob("water year"))
+```
+
+**Caption:** Comparison of evapotranspiration computed using water
+balance method and from remote-sensed data
+
+``` r
+# Export the plot as png
+
+ggsave(filename = "ET_comparison.png",
+       plot = ET_annotated,
+       device = "png",
+       path = '2_final_figures',
+       width = 8,
+       height = 4,
+       units = "in",
+       dpi = 200,
+       bg = "white")
+```
+
+2.  Watershed location
