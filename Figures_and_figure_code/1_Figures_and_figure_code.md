@@ -1,26 +1,32 @@
----
-title: "Figures and Figure Code"
-output: github_document
----
+Figures and Figure Code
+================
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-This is an R Markdown document of the process done to generate figures for the project.
+This is an R Markdown document of the process done to generate figures
+for the project.
 
 ### Required packages and libraries:
 
-```{r}
+``` r
 library(tidyverse)
+```
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+    ## ✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+    ## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+    ## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+    ## ✔ readr   2.1.3      ✔ forcats 0.5.2 
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 library(ggplot2)
 library(ggpubr)
 ```
 
 ### Read in the .csv files containing the data for each watershed:
 
-```{r}
-
+``` r
 # Note: file paths have to be changed by the user.
 
 OysterNH_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/OysterNH_data.csv")
@@ -30,14 +36,11 @@ MechumsVA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and
 FlatNC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/FlatNC_data.csv")
 NorthForkSC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/NorthForkSC_data.csv")
 IchawayGA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_data.csv")
-
 ```
-
 
 ### PLOT: Annual water balance ET of each watershed
 
-```{r}
-
+``` r
 annual_WB_ET <- ggplot() +
   geom_line(data = OysterNH_data, (aes(x = water_year, y = WB_annual_total_aet, color = "Oyster River, NH"))) +
   geom_line(data = WappingerNY_data, (aes(x = water_year, y = WB_annual_total_aet, color = "Wappinger Creek, NY"))) +
@@ -73,26 +76,27 @@ annual_WB_ET <- ggplot() +
   theme(legend.title = element_text(face = "bold"))
 
 annual_WB_ET
-
 ```
-&nbsp;
 
-**Caption:** Annual evapotranspiration from water years 1990-2020 computed using the water balance method
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+ 
 
+**Caption:** Annual evapotranspiration from water years 1990-2020
+computed using the water balance method
 
-```{r}
+``` r
 # Export the plot as png
 
 ggsave(filename = "annual_WB_ET.png",
        plot = annual_WB_ET,
        device = "png",
-       path = 'final_figures',
+       path = '2_final_figures',
        width = 8,
        height = 4,
        units = "in",
        dpi = 200)
 ```
 
-&nbsp;
+ 
 
-### PLOT: 
+### PLOT:
