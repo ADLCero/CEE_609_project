@@ -28,3 +28,4 @@ Repository for CEE 609: Environmental Data Science project, Fall 2022
 
 1. **Data_download_and_preprocess_code**: scripts for downloading data
 2. **Model_train_and_validate_code**: script and data for formulating, fitting, and testing models for predicting evapotranspiration
+3. **Figures_and_figure_code**: markdown file showing the process of creating figures of the data and results
