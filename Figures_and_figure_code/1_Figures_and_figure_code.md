@@ -67,7 +67,7 @@ annual_WB_ET <- ggplot() +
                                "Ichawaynochaway, GA")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(x = "water year",
        y = "annual water balance evapotranspiration (mm)") +
@@ -132,11 +132,12 @@ annual_RS_precip <- ggplot() +
   scale_y_continuous(breaks = seq(500, 2000, 500), limits = c(500, 2000)) +
   
   labs(x = "water year",
-       y = "annual total precipitation (mm)") +
+       y = "annual total\n precipitation (mm)") +
   
   theme_bw() +
   
-  theme(legend.title = element_text(face = "bold"))
+  theme(legend.title = element_text(face = "bold"),
+        axis.title.x = element_blank())
 
 annual_RS_precip
 ```
@@ -148,15 +149,240 @@ annual_RS_precip
 ``` r
 # Export the plot as png
 
-ggsave(filename = "annual_RS_precip.png",
-       plot = annual_RS_precip,
+# ggsave(filename = "annual_RS_precip.png",
+#        plot = annual_RS_precip,
+#        device = "png",
+#        path = '2_final_figures',
+#        width = 8,
+#        height = 4,
+#        units = "in",
+#        dpi = 200)
+```
+
+ 
+
+### PLOT: Annual total potential evapotranspiration
+
+``` r
+annual_RS_pet <- ggplot() +
+  geom_line(data = OysterNH_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "Oyster River, NH"))) +
+  geom_line(data = WappingerNY_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "Wappinger Creek, NY"))) +
+  geom_line(data = BrandywinePA_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "Brandywine Creek, PA"))) +
+  geom_line(data = MechumsVA_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "Mechums River, VA"))) +
+  geom_line(data = FlatNC_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "Flat River, NC"))) +
+  geom_line(data = NorthForkSC_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "North Fork Edisto, SC"))) +
+  geom_line(data = IchawayGA_data, (aes(x = water_year, y = (RS_annual_total_pet * 0.1), color = "Ichawaynochaway, GA"))) +
+  
+  scale_color_manual(name = "watershed",
+                     values = c("Oyster River, NH" = "#a6cee3",
+                                "Wappinger Creek, NY" = "#1f78b4",
+                                "Brandywine Creek, PA" = "#b2df8a",
+                                "Mechums River, VA" = "#33a02c",
+                                "Flat River, NC" = "#fb9a99",
+                                "North Fork Edisto, SC" = "#e31a1c",
+                                "Ichawaynochaway, GA" = "#fdbf6f"),
+                     breaks = c("Oyster River, NH",
+                               "Wappinger Creek, NY",
+                               "Brandywine Creek, PA",
+                               "Mechums River, VA",
+                               "Flat River, NC",
+                               "North Fork Edisto, SC",
+                               "Ichawaynochaway, GA")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  
+  labs(x = "water year",
+       y = "annual total potential \nevapotranspiration (mm)") +
+  
+  theme_bw() +
+  
+  theme(legend.title = element_text(face = "bold"),
+        axis.title.x = element_blank())
+
+annual_RS_pet
+```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+**Caption:** Annual total potential evapotranspiration from water years
+1990-2020
+
+``` r
+# Export the plot as png
+
+# ggsave(filename = "annual_RS_pet.png",
+#        plot = annual_RS_pet,
+#        device = "png",
+#        path = '2_final_figures',
+#        width = 8,
+#        height = 4,
+#        units = "in",
+#        dpi = 200)
+```
+
+ 
+
+### PLOT: Annual total soil moisture
+
+``` r
+annual_RS_soil_moisture <- ggplot() +
+  geom_line(data = OysterNH_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "Oyster River, NH"))) +
+  geom_line(data = WappingerNY_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "Wappinger Creek, NY"))) +
+  geom_line(data = BrandywinePA_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "Brandywine Creek, PA"))) +
+  geom_line(data = MechumsVA_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "Mechums River, VA"))) +
+  geom_line(data = FlatNC_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "Flat River, NC"))) +
+  geom_line(data = NorthForkSC_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "North Fork Edisto, SC"))) +
+  geom_line(data = IchawayGA_data, (aes(x = water_year, y = (RS_annual_total_soil_moisture * 0.1), color = "Ichawaynochaway, GA"))) +
+  
+  scale_color_manual(name = "watershed",
+                     values = c("Oyster River, NH" = "#a6cee3",
+                                "Wappinger Creek, NY" = "#1f78b4",
+                                "Brandywine Creek, PA" = "#b2df8a",
+                                "Mechums River, VA" = "#33a02c",
+                                "Flat River, NC" = "#fb9a99",
+                                "North Fork Edisto, SC" = "#e31a1c",
+                                "Ichawaynochaway, GA" = "#fdbf6f"),
+                     breaks = c("Oyster River, NH",
+                               "Wappinger Creek, NY",
+                               "Brandywine Creek, PA",
+                               "Mechums River, VA",
+                               "Flat River, NC",
+                               "North Fork Edisto, SC",
+                               "Ichawaynochaway, GA")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2200, 500), limits = c(0, 2200)) +
+  
+  labs(x = "water year",
+       y = "annual total\n soil moisture (mm)") +
+  
+  theme_bw() +
+  
+  theme(legend.title = element_text(face = "bold"),
+        axis.title.x = element_blank())
+
+annual_RS_soil_moisture
+```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+**Caption:** Annual total soil moisture from water years 1990-2020
+
+``` r
+# Export the plot as png
+
+# ggsave(filename = "annual_RS_soil_moisture.png",
+#        plot = annual_RS_soil_moisture,
+#        device = "png",
+#        path = '2_final_figures',
+#        width = 8,
+#        height = 4,
+#        units = "in",
+#        dpi = 200)
+```
+
+ 
+
+### PLOT: Annual average monthly maximum temperature
+
+``` r
+annual_RS_monthly_tmax <- ggplot() +
+  geom_line(data = OysterNH_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "Oyster River, NH"))) +
+  geom_line(data = WappingerNY_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "Wappinger Creek, NY"))) +
+  geom_line(data = BrandywinePA_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "Brandywine Creek, PA"))) +
+  geom_line(data = MechumsVA_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "Mechums River, VA"))) +
+  geom_line(data = FlatNC_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "Flat River, NC"))) +
+  geom_line(data = NorthForkSC_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "North Fork Edisto, SC"))) +
+  geom_line(data = IchawayGA_data, (aes(x = water_year, y = (RS_ave_monthly_tmax * 0.1), color = "Ichawaynochaway, GA"))) +
+  
+  scale_color_manual(name = "watershed",
+                     values = c("Oyster River, NH" = "#a6cee3",
+                                "Wappinger Creek, NY" = "#1f78b4",
+                                "Brandywine Creek, PA" = "#b2df8a",
+                                "Mechums River, VA" = "#33a02c",
+                                "Flat River, NC" = "#fb9a99",
+                                "North Fork Edisto, SC" = "#e31a1c",
+                                "Ichawaynochaway, GA" = "#fdbf6f"),
+                     breaks = c("Oyster River, NH",
+                               "Wappinger Creek, NY",
+                               "Brandywine Creek, PA",
+                               "Mechums River, VA",
+                               "Flat River, NC",
+                               "North Fork Edisto, SC",
+                               "Ichawaynochaway, GA")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 30, 5), limits = c(0, 30)) +
+  
+  labs(x = "water year",
+       y = "average monthly\n maximum temperature\n (degrees Celsius)") +
+  
+  theme_bw() +
+  
+  theme(legend.title = element_text(face = "bold"),
+        axis.title.x = element_blank())
+
+annual_RS_monthly_tmax
+```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+**Caption:** Average monthly maximum temperature from water years
+1990-2020
+
+``` r
+# Export the plot as png
+
+# ggsave(filename = "annual_RS_monthly_tmax.png",
+#        plot = annual_RS_monthly_tmax,
+#        device = "png",
+#        path = '2_final_figures',
+#        width = 8,
+#        height = 4,
+#        units = "in",
+#        dpi = 200)
+```
+
+**Combined plots:**
+
+``` r
+predictors <- ggarrange(annual_RS_precip,
+          annual_RS_pet,
+          annual_RS_soil_moisture,
+          annual_RS_monthly_tmax,
+          ncol = 2,
+          nrow = 2, common.legend = TRUE)
+
+# Annotate figure
+
+predictors_annotated <- annotate_figure(predictors,
+                bottom = text_grob("water year"))
+
+predictors_annotated
+```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+**Caption:** Annual total precipitation, total potential
+evapotranspiration, total soil moisture, and average monthly maximum
+temperature from water years 1990-2020
+
+``` r
+# Export the plot as png
+
+ggsave(filename = "predictors.png",
+       plot = predictors_annotated,
        device = "png",
        path = '2_final_figures',
-       width = 8,
-       height = 4,
+       width = 10,
+       height = 7,
        units = "in",
-       dpi = 200)
+       dpi = 200,
+       bg = "white")
 ```
+
+ 
 
 ### PLOTS: Water balance ET vs remote-sensed ET
 
@@ -173,7 +399,7 @@ OysterNH_ET <- ggplot(data = OysterNH_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "Oyster River, NH") +
   
@@ -197,7 +423,7 @@ WappingerNY_ET <- ggplot(data = WappingerNY_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "Wappinger Creek, NY") +
   
@@ -221,7 +447,7 @@ BrandywinePA_ET <- ggplot(data = BrandywinePA_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "Brandywine Creek, PA") +
   
@@ -245,7 +471,7 @@ MechumsVA_ET <- ggplot(data = MechumsVA_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "Mechums River, VA") +
   
@@ -269,7 +495,7 @@ FlatNC_ET <- ggplot(data = FlatNC_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "Flat River, NC") +
   
@@ -293,7 +519,7 @@ NorthForkSC_ET <- ggplot(data = NorthForkSC_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "North Fork Edisto, SC") +
   
@@ -317,7 +543,7 @@ IchawayGA_ET <- ggplot(data = IchawayGA_data) +
                      breaks = c("remote-sensed ET")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  scale_y_continuous(breaks = seq(-500, 2000, 500), limits = c(-600, 2000)) +
+  scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
   
   labs(title = "Ichawaynochaway, GA") +
   
@@ -343,7 +569,7 @@ ET <- ggarrange(OysterNH_ET,
 ET
 ```
 
-![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ``` r
 # Annotate figure
@@ -351,7 +577,11 @@ ET
 ET_annotated <- annotate_figure(ET,
                 left = text_grob("annual evapotranspiration (mm)", rot = 90),
                 bottom = text_grob("water year"))
+
+ET_annotated
 ```
+
+![](1_Figures_and_figure_code_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
 
 **Caption:** Comparison of evapotranspiration computed using water
 balance method and from remote-sensed data
@@ -363,11 +593,13 @@ ggsave(filename = "ET_comparison.png",
        plot = ET_annotated,
        device = "png",
        path = '2_final_figures',
-       width = 8,
-       height = 4,
+       width = 10,
+       height = 7,
        units = "in",
        dpi = 200,
        bg = "white")
 ```
 
-2.  Watershed location
+ 
+
+### PLOT: Watershed location
