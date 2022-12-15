@@ -59,11 +59,6 @@ WaterYear <- function(date) {
 
 # Oyster River, New Hampshire = OysterNH
 
-# No need to re-read in the watershed shapefile if it is still in the environment
-
-OysterNH_ws <- st_read("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/OysterNH_ws/OysterNH.shp", quiet = TRUE)
-
-
 # PERIOD: 1980-10-01 to 2000-09-30
 
 setTimeLimit(1000)   # set time limit so that process doesn't time-out until download is complete

@@ -27,7 +27,7 @@ OysterNH_data <- data.frame(OysterNH_WBET$water_year,
                             OysterNH_soil_summary$ave_monthly_soil,
                             OysterNH_tmax_summary$ave_monthly_tmax,
                             OysterNH_NDVI_summary$ave_NDVI,
-                            OysterNH_NDVI_summary$max_NDVI,
+                            OysterNH_NDVI_summary$max_NDVI
                             )
 
 # Rename columns

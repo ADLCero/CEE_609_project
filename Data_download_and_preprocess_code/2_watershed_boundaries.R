@@ -22,15 +22,15 @@ devtools::install_github("markwh/streamstats")
 
 # Note: There may be other dependencies that will be asked to be installed first.
 
+# LIBRARIES from previous scripts (no need to be re-ran unless R restarted):
 
-# LIBRARIES:
+library(dataRetrieval)
+library(tidyverse)
+library(lubridate)
+
+# ADDITIONAL LIBRARIES:
 
 library(streamstats)
-library(rgee)      # Must be installed properly following: https://cran.r-project.org/web/packages/rgee/vignettes/rgee01.html
-library(sf)
-
-# Workflow reference:
-# https://github.com/r-spatial/rgee
 
 ################################################################################
 
