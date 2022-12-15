@@ -2,8 +2,10 @@
 CEE 609 Project
 FILE STRUCTURE
 
+
 0_Important_changes.txt
 = important changes in the project
+
 
 0_README.txt
 = instructions

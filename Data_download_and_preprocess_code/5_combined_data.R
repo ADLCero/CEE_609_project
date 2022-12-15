@@ -5,7 +5,10 @@
 
 # COMBINED DATA
 
-# This script compiles all the necessary data into a single data frame
+# This script compiles all the necessary data into a single data frame.
+
+# IMPORTANT NOTE:
+# This will only work if all the data frames from the previous scripts are still in the environment.
 
 ################################################################################
 
