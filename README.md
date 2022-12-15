@@ -4,6 +4,9 @@ This project was created using [R programming language](https://www.r-project.or
 
 All scripts are provided with instructions on which packages and libraries are necessary to be downloaded and used. These are also listed in the R_packages_libraries.txt file.
 
+**Important warning:** do not clear the environment in R as each subsequent script relies on the dataframes produced in the previous script.
+
+
 ### Contents (Folders):
 
 1. **Data_download_and_preprocess_code**: R scripts for downloading data; shapefiles of watershed boundaries
