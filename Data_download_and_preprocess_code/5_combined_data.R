@@ -22,7 +22,9 @@ OysterNH_data <- data.frame(OysterNH_WBET$water_year,
                             OysterNH_pet_summary$ave_monthly_pet,
                             OysterNH_soil_summary$total_annual_soil,
                             OysterNH_soil_summary$ave_monthly_soil,
-                            OysterNH_tmax_summary$ave_monthly_tmax
+                            OysterNH_tmax_summary$ave_monthly_tmax,
+                            OysterNH_NDVI_summary$ave_NDVI,
+                            OysterNH_NDVI_summary$max_NDVI,
                             )
 
 # Rename columns
@@ -38,7 +40,9 @@ colnames(OysterNH_data) <- c("water_year",
                              "RS_ave_monthly_pet",
                              "RS_annual_total_soil_moisture",
                              "RS_ave_monthly_soil_moisture",
-                             "RS_ave_monthly_tmax")
+                             "RS_ave_monthly_tmax",
+                             "RS_ave_NDVI",
+                             "RS_max_NDVI")
 
 
 ################################################################################
@@ -56,24 +60,26 @@ WappingerNY_data <- data.frame(WappingerNY_WBET$water_year,
                             WappingerNY_pet_summary$ave_monthly_pet,
                             WappingerNY_soil_summary$total_annual_soil,
                             WappingerNY_soil_summary$ave_monthly_soil,
-                            WappingerNY_tmax_summary$ave_monthly_tmax
-)
+                            WappingerNY_tmax_summary$ave_monthly_tmax,
+                            WappingerNY_NDVI_summary$ave_NDVI,
+                            WappingerNY_NDVI_summary$max_NDVI)
 
 # Rename columns
 
 colnames(WappingerNY_data) <- c("water_year",
-                             "WB_annual_total_aet",
-                             "WB_ave_aet",
-                             "RS_annual_total_aet",
-                             "RS_ave_monthly_aet",
-                             "RS_annual_total_precip",
-                             "RS_ave_monthly_precip",
-                             "RS_annual_total_pet",
-                             "RS_ave_monthly_pet",
-                             "RS_annual_total_soil_moisture",
-                             "RS_ave_monthly_soil_moisture",
-                             "RS_ave_monthly_tmax")
-
+                                "WB_annual_total_aet",
+                                "WB_ave_aet",
+                                "RS_annual_total_aet",
+                                "RS_ave_monthly_aet",
+                                "RS_annual_total_precip",
+                                "RS_ave_monthly_precip",
+                                "RS_annual_total_pet",
+                                "RS_ave_monthly_pet",
+                                "RS_annual_total_soil_moisture",
+                                "RS_ave_monthly_soil_moisture",
+                                "RS_ave_monthly_tmax",
+                                "RS_ave_NDVI",
+                                "RS_max_NDVI")
 
 ################################################################################
 
@@ -90,23 +96,26 @@ BrandywinePA_data <- data.frame(BrandywinePA_WBET$water_year,
                                BrandywinePA_pet_summary$ave_monthly_pet,
                                BrandywinePA_soil_summary$total_annual_soil,
                                BrandywinePA_soil_summary$ave_monthly_soil,
-                               BrandywinePA_tmax_summary$ave_monthly_tmax
-)
+                               BrandywinePA_tmax_summary$ave_monthly_tmax,
+                               BrandywinePA_NDVI_summary$ave_NDVI,
+                               BrandywinePA_NDVI_summary$max_NDVI)
 
 # Rename columns
 
 colnames(BrandywinePA_data) <- c("water_year",
-                                "WB_annual_total_aet",
-                                "WB_ave_aet",
-                                "RS_annual_total_aet",
-                                "RS_ave_monthly_aet",
-                                "RS_annual_total_precip",
-                                "RS_ave_monthly_precip",
-                                "RS_annual_total_pet",
-                                "RS_ave_monthly_pet",
-                                "RS_annual_total_soil_moisture",
-                                "RS_ave_monthly_soil_moisture",
-                                "RS_ave_monthly_tmax")
+                                 "WB_annual_total_aet",
+                                 "WB_ave_aet",
+                                 "RS_annual_total_aet",
+                                 "RS_ave_monthly_aet",
+                                 "RS_annual_total_precip",
+                                 "RS_ave_monthly_precip",
+                                 "RS_annual_total_pet",
+                                 "RS_ave_monthly_pet",
+                                 "RS_annual_total_soil_moisture",
+                                 "RS_ave_monthly_soil_moisture",
+                                 "RS_ave_monthly_tmax",
+                                 "RS_ave_NDVI",
+                                 "RS_max_NDVI")
 
 
 ################################################################################
@@ -124,23 +133,26 @@ MechumsVA_data <- data.frame(MechumsVA_WBET$water_year,
                                 MechumsVA_pet_summary$ave_monthly_pet,
                                 MechumsVA_soil_summary$total_annual_soil,
                                 MechumsVA_soil_summary$ave_monthly_soil,
-                                MechumsVA_tmax_summary$ave_monthly_tmax
-)
+                                MechumsVA_tmax_summary$ave_monthly_tmax,
+                             MechumsVA_NDVI_summary$ave_NDVI,
+                             MechumsVA_NDVI_summary$max_NDVI)
 
 # Rename columns
 
 colnames(MechumsVA_data) <- c("water_year",
-                                 "WB_annual_total_aet",
-                                 "WB_ave_aet",
-                                 "RS_annual_total_aet",
-                                 "RS_ave_monthly_aet",
-                                 "RS_annual_total_precip",
-                                 "RS_ave_monthly_precip",
-                                 "RS_annual_total_pet",
-                                 "RS_ave_monthly_pet",
-                                 "RS_annual_total_soil_moisture",
-                                 "RS_ave_monthly_soil_moisture",
-                                 "RS_ave_monthly_tmax")
+                              "WB_annual_total_aet",
+                              "WB_ave_aet",
+                              "RS_annual_total_aet",
+                              "RS_ave_monthly_aet",
+                              "RS_annual_total_precip",
+                              "RS_ave_monthly_precip",
+                              "RS_annual_total_pet",
+                              "RS_ave_monthly_pet",
+                              "RS_annual_total_soil_moisture",
+                              "RS_ave_monthly_soil_moisture",
+                              "RS_ave_monthly_tmax",
+                              "RS_ave_NDVI",
+                              "RS_max_NDVI")
 
 
 ################################################################################
@@ -158,23 +170,26 @@ FlatNC_data <- data.frame(FlatNC_WBET$water_year,
                              FlatNC_pet_summary$ave_monthly_pet,
                              FlatNC_soil_summary$total_annual_soil,
                              FlatNC_soil_summary$ave_monthly_soil,
-                             FlatNC_tmax_summary$ave_monthly_tmax
-)
+                             FlatNC_tmax_summary$ave_monthly_tmax,
+                          FlatNC_NDVI_summary$ave_NDVI,
+                          FlatNC_NDVI_summary$max_NDVI)
 
 # Rename columns
 
 colnames(FlatNC_data) <- c("water_year",
-                              "WB_annual_total_aet",
-                              "WB_ave_aet",
-                              "RS_annual_total_aet",
-                              "RS_ave_monthly_aet",
-                              "RS_annual_total_precip",
-                              "RS_ave_monthly_precip",
-                              "RS_annual_total_pet",
-                              "RS_ave_monthly_pet",
-                              "RS_annual_total_soil_moisture",
-                              "RS_ave_monthly_soil_moisture",
-                              "RS_ave_monthly_tmax")
+                           "WB_annual_total_aet",
+                           "WB_ave_aet",
+                           "RS_annual_total_aet",
+                           "RS_ave_monthly_aet",
+                           "RS_annual_total_precip",
+                           "RS_ave_monthly_precip",
+                           "RS_annual_total_pet",
+                           "RS_ave_monthly_pet",
+                           "RS_annual_total_soil_moisture",
+                           "RS_ave_monthly_soil_moisture",
+                           "RS_ave_monthly_tmax",
+                           "RS_ave_NDVI",
+                           "RS_max_NDVI")
 
 
 ################################################################################
@@ -192,23 +207,26 @@ NorthForkSC_data <- data.frame(NorthForkSC_WBET$water_year,
                           NorthForkSC_pet_summary$ave_monthly_pet,
                           NorthForkSC_soil_summary$total_annual_soil,
                           NorthForkSC_soil_summary$ave_monthly_soil,
-                          NorthForkSC_tmax_summary$ave_monthly_tmax
-)
+                          NorthForkSC_tmax_summary$ave_monthly_tmax,
+                          NorthForkSC_NDVI_summary$ave_NDVI,
+                          NorthForkSC_NDVI_summary$max_NDVI)
 
 # Rename columns
 
 colnames(NorthForkSC_data) <- c("water_year",
-                           "WB_annual_total_aet",
-                           "WB_ave_aet",
-                           "RS_annual_total_aet",
-                           "RS_ave_monthly_aet",
-                           "RS_annual_total_precip",
-                           "RS_ave_monthly_precip",
-                           "RS_annual_total_pet",
-                           "RS_ave_monthly_pet",
-                           "RS_annual_total_soil_moisture",
-                           "RS_ave_monthly_soil_moisture",
-                           "RS_ave_monthly_tmax")
+                                "WB_annual_total_aet",
+                                "WB_ave_aet",
+                                "RS_annual_total_aet",
+                                "RS_ave_monthly_aet",
+                                "RS_annual_total_precip",
+                                "RS_ave_monthly_precip",
+                                "RS_annual_total_pet",
+                                "RS_ave_monthly_pet",
+                                "RS_annual_total_soil_moisture",
+                                "RS_ave_monthly_soil_moisture",
+                                "RS_ave_monthly_tmax",
+                                "RS_ave_NDVI",
+                                "RS_max_NDVI")
 
 
 ################################################################################
@@ -226,23 +244,26 @@ IchawayGA_data <- data.frame(IchawayGA_WBET$water_year,
                                IchawayGA_pet_summary$ave_monthly_pet,
                                IchawayGA_soil_summary$total_annual_soil,
                                IchawayGA_soil_summary$ave_monthly_soil,
-                               IchawayGA_tmax_summary$ave_monthly_tmax
-)
+                               IchawayGA_tmax_summary$ave_monthly_tmax,
+                             IchawayGA_NDVI_summary$ave_NDVI,
+                             IchawayGA_NDVI_summary$max_NDVI)
 
 # Rename columns
 
 colnames(IchawayGA_data) <- c("water_year",
-                                "WB_annual_total_aet",
-                                "WB_ave_aet",
-                                "RS_annual_total_aet",
-                                "RS_ave_monthly_aet",
-                                "RS_annual_total_precip",
-                                "RS_ave_monthly_precip",
-                                "RS_annual_total_pet",
-                                "RS_ave_monthly_pet",
-                                "RS_annual_total_soil_moisture",
-                                "RS_ave_monthly_soil_moisture",
-                                "RS_ave_monthly_tmax")
+                              "WB_annual_total_aet",
+                              "WB_ave_aet",
+                              "RS_annual_total_aet",
+                              "RS_ave_monthly_aet",
+                              "RS_annual_total_precip",
+                              "RS_ave_monthly_precip",
+                              "RS_annual_total_pet",
+                              "RS_ave_monthly_pet",
+                              "RS_annual_total_soil_moisture",
+                              "RS_ave_monthly_soil_moisture",
+                              "RS_ave_monthly_tmax",
+                              "RS_ave_NDVI",
+                              "RS_max_NDVI")
 
 
 ################################################################################

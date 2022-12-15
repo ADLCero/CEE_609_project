@@ -21,8 +21,12 @@ FILE STRUCTURE
 = R script for the data download and pre-process code of remote-sensed evapotranspiration 
 
 
-4_remote_sensed_predictors.R
-= R script for the data download and pre-process code of predictors
+4_remote_sensed_predictors_1.R
+= R script for the data download and pre-process code of predictors, except NDVI
+
+
+4_remote_sensed_predictors_NDVI.R
+= R script for the data download and pre-process code of NDVI
 
 
 5_combined_data.R
@@ -54,4 +58,14 @@ However, it was decided to use data from weather stations such that the evapotra
 Ideally, data from the station nearest to the USGS gauge will be used. However, it is highly likely that the data does not cover the entire time period that the discharge data does. While using combination of data from different stations is an option, for now, the nearest station with the most complete data was chosen. Initially, 20 of the nearest stations were explored. This number was increased if none of the stations yielded complete data.
 
 This step can later on be refined to improve estimates of ET.
+
+
+3. NDVI values were obtained from two different data sets:
+For 1989-10-01 to 2000-09-30,
+Landsat 5 TM Collection 1 Tier 1 8-Day NDVI Composite
+
+For 2000-10-01 to 2020-09-30,
+MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km
+
+Annual averages from Landsat are lower than the annual averages from MODIS.
 
