@@ -60,7 +60,9 @@ For each variable, 31 water years (1990-2020) of data were obtained. A water yea
 
 The final dataframe containing 31 water years of the water-balance ET and the predictors were divided into training and validation data set (1990-2014, 25 years) for fitting the model and 20% of the data (2015-2020, 6 years) were separated and not processed for use in testing and evaluation of the model fit.
 
+![Data_Methods](https://user-images.githubusercontent.com/95758941/207945922-fae54e3a-9391-4032-8915-c5e35e07635d.png)
 
+_**Figure 2.** Methodological framework of the study. Important R packages used are in the orange rectangles._
 
 # Results
 
