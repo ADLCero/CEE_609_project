@@ -40,23 +40,25 @@ _**Figure 1.** Framework of the study_
 
 # Data and methods
 
-**Table 1.** Watersheds that will represent areas from north to south of US' eastern region
+**Table 1.** Selected watersheds that represent areas from north to south of US' eastern region
 
-| Watershed  | USGS Site Number |
-| ------------- | ------------- |
-| Oyster River, New Hampshire  | 01073000  |
-| Wappinger Creek, New York  | 01372500  |
-| Brandywine Creek, Pennsylvania  | 01481000  |
-| Mechums River, Virginia  | 02031000  |
-| Flat River, North Carolina  | 02085500  |
-| North Fork Edisto, South Carolina  | 02173500  |
-| Ichawaynochaway, Georgia  | 02353500  |
+| Watershed  | USGS Site Number | Drainage area (km<sup>2</sup>) |
+| ------------- | ------------- | ------------- |
+| Oyster River, New Hampshire  | 01073000  | 31.39  |
+| Wappinger Creek, New York  | 01372500  | 468.79  |
+| Brandywine Creek, Pennsylvania  | 01481000  |  743.33  |
+| Mechums River, Virginia  | 02031000  |  246.83  |
+| Flat River, North Carolina  | 02085500  |  385.91  |
+| North Fork Edisto, South Carolina  | 02173500  |  1768.96  |
+| Ichawaynochaway, Georgia  | 02353500  |  1605.79  |
 
 ## Data download and pre-processing
 
 For each variable, 31 water years (1990-2020) of data were obtained. A water year is defined as the 12-month period from October 1st to September 30th of the following year (ex. October 1, 2021 to September 30, 2022 belongs to water year 2022). This is mostly used in the analysis of hydrological data to take into account that fall season is consistently the driest period and when interannual variations in storage will be the smallest. 
 
-This data set were divided into training and validation data set (24 years) for fitting the model and 20% of the data (6 years) were separated and not processed for use in testing and evaluation of the model fit.
+## Model training and validation
+
+The final dataframe containing 31 water years of the water-balance ET and the predictors were divided into training and validation data set (1990-2014, 25 years) for fitting the model and 20% of the data (2015-2020, 6 years) were separated and not processed for use in testing and evaluation of the model fit.
 
 
 
