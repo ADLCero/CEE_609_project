@@ -136,32 +136,42 @@ _**Figure 2.** Methodological framework of the study. Important R packages used 
 
 # Results
 
+Trends in the predictor variables, particularly for annual total potential evapotranspiration and average monthly maximum temperature show the expected difference in the climatic profile among the watersheds depending on their location (i.e., higher PET and temperature at watersheds in lower latitude). It is important to note that for NDVI, while the trend is consistent (higher NDVI at watersheds in higher latitude), the values coming from LANDSAT differ by approximately less than 0.1 compared to the values that come from MODIS. This gap is even wider among annual average NDVI, hence, the decision to use the maximum NDVI instead in the regression analysis (Figure 3).
+
 
 ![predictors](https://user-images.githubusercontent.com/95758941/208009974-56da6ee2-ea50-4b7d-8b01-82d5220e4467.png)
-_**Figure .** Annual total precipitation, total potential evapotranspiration, total soil moisture, average monthly maximum temperature, and maximum NDVI from water years 1990-2020_
+_**Figure 3.** Annual total precipitation, total potential evapotranspiration, total soil moisture, average monthly maximum temperature, and maximum NDVI from water years 1990-2020_
 
 &nbsp;
+
+The computed evapotranspiration using water balance method in some of the watersheds (Oyster River, NH and Wappinger Creek, NY) yielded negative values, which can potentially be due to discrepancies in the precipitation and discharge data. These negative values were omitted from the data prior to making the models as they do not accurately represent expected evapotranspiration values. Most of the computed water balance evapotranspiration reveal a slight increase from water year 1990 to 2020 (Figure 4). The average annual water balance ET range from 505 to 943 mm, with the lowest in Wappinger Creek, NY and the highest in North Fork Edisto, SC.
+
 
 ![annual_WB_ET](https://user-images.githubusercontent.com/95758941/208010232-923119f8-486d-4c04-92d2-fc6dbc3f5e74.png)
-_**Figure .** Annual evapotranspiration from water years 1990-2020 computed using water balance method_
+_**Figure 4.** Annual evapotranspiration from water years 1990-2020 computed using water balance method_
 
 
 &nbsp;
+
+Comparison of water balance ET with remote-sensed ET shows a more steady trend across the record in the remote-sensed data compared to high variations in the water-balance derived data (Figure 5). Test for equality of variances between the two data sets among all watersheds indicate that their variances are not equal, with the ratio ranging from 0.03 to 0.11 (i.e. ratio closer to 1 indicates closer similarity in variance). On the other hand, t-test of their means indicate that in all watersheds, the means of the water-balance ET and the remote-sensed ET are significantly different. This indicate that the two data sets are highly different.
+
 
 ![ET_comparison](https://user-images.githubusercontent.com/95758941/208010476-4a8f8888-03da-452a-af52-ef0ed332883a.png)
-_**Figure .** Comparison of evapotranspiration computed using water balance method and evapotranspiration from remote-sensed data_
+_**Figure 5.** Comparison of evapotranspiration computed using water balance method and evapotranspiration from remote-sensed data_
 
 &nbsp;
 
 
-_**Table .** Predictor variables and their corresponding coefficient estimates and p-values in multiple linear regression model wherein all predictors are regressed against the water-balance evapotranspiration. Cells in light blue are the variables that are significant at alpha = 0.05_
+Multiple linear regression of all predictor variables with the water balance ET indicate the significance of precipitation to be included in predictive models (Table 3). This is further confirmed among the “best” models selected for each watershed (Table 4), wherein precipitation is consistently included and a significant variable in the model. Precipitation also shows the similar trend with water-balance evapotranspiration (Figure 6). On the other hand, PET and monthly maximum temperature are also consistently highly collinear, which can be expected since the PET from TerraClimate was derived using ASCE Penman-Monteith model, which uses air temperature in its equation, and at the same time, higher temperatures are known to increase rate of evaporation.
+
+_**Table 3.** Predictor variables and their corresponding coefficient estimates and p-values in multiple linear regression model wherein all predictors are regressed against the water-balance evapotranspiration. Cells in light blue are the variables that are significant at alpha = 0.05_
 
 ![Screenshot 2022-12-15 at 20 50 51](https://user-images.githubusercontent.com/95758941/208003548-668b20f4-826d-4b02-b219-b1805fae8a59.png)
 
 
 &nbsp;
 
-_**Table .** Final regression model of each watershed_
+_**Table 4.** Final regression model of each watershed_
 ![Screenshot 2022-12-15 at 20 58 29](https://user-images.githubusercontent.com/95758941/208004549-51b71f50-47ab-41a5-a239-398cfd31ab44.png)
 
 \* Only precipitation is the significant variable
@@ -169,12 +179,12 @@ _**Table .** Final regression model of each watershed_
 &nbsp;
 
 ![precip_AET_comparison](https://user-images.githubusercontent.com/95758941/208030702-81b7e757-d825-42cb-b3f7-fc9051ea3f3e.png)
-_**Figure .** Trends in remote-sensed precipitation and water-balance evapotranspiration._
+_**Figure 6.** Trends in remote-sensed precipitation and water-balance evapotranspiration._
 
 &nbsp;
 
 ![predictions](https://user-images.githubusercontent.com/95758941/208029377-ead17096-f412-49f8-816b-502226b6bce5.png)
-_**Figure .** Predicted versus observed (water balance) annual evapotranspiration. Points in black are the computed water balance ET while points in color are the predicted values using the "best" regression model for each watershed._
+_**Figure 7.** Predicted versus observed (water balance) annual evapotranspiration. Points in black are the computed water balance ET while points in color are the predicted values using the "best" regression model for each watershed._
 
 
 
