@@ -97,8 +97,15 @@ _**Table .** Final regression model of each watershed_
 
 &nbsp;
 
-![precip_AET_comparison](https://user-images.githubusercontent.com/95758941/208011143-a7f76535-839b-4f69-8209-fb22eeaeab9d.png)
-_**Figure .** Trends in remote-sensed precipitation and water-balance evapotranspiration_
+![precip_AET_comparison](https://user-images.githubusercontent.com/95758941/208030702-81b7e757-d825-42cb-b3f7-fc9051ea3f3e.png)
+_**Figure .** Trends in remote-sensed precipitation and water-balance evapotranspiration._
+
+&nbsp;
+
+![predictions](https://user-images.githubusercontent.com/95758941/208029377-ead17096-f412-49f8-816b-502226b6bce5.png)
+_**Figure .** Predicted versus observed (water balance) annual evapotranspiration. Points in black are the computed water balance ET while points in color are the predicted values using the "best" regression model for each watershed._
+
+
 
 &nbsp;
 
