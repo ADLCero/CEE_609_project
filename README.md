@@ -21,9 +21,6 @@ Each folder has their corresponding "data" folder where the outputs are stored. 
 
 # Introduction
 
-![Intro](https://user-images.githubusercontent.com/95758941/207928238-02a77db6-31ab-4d58-8436-7121d1437a2a.png)
-
-_**Figure 1.** Conceptual framework of the study_
 
 
 
@@ -37,6 +34,11 @@ _**Figure 1.** Conceptual framework of the study_
     - soil moisture;
     - average monthly maximum temperature;
     - vegetation activity (Normalized Difference Vegetation Index (NDVI))?
+
+&nbsp;
+
+![Intro](https://user-images.githubusercontent.com/95758941/207928238-02a77db6-31ab-4d58-8436-7121d1437a2a.png)
+_**Figure 1.** Conceptual framework of the study_
 
 
 # Data and methods
@@ -62,6 +64,8 @@ For each variable, 31 water years (1990-2020) of data were obtained. A water yea
 
 ### Water-balance evapotranspiration
 
+To be completely based on measurements that can be done in the field unlike remote-sensed data, the variables necessary in computing for the water balance evapotranspiration used data from gauge sites:
+
 #### _Discharge_
 
 Records of discharge from the United States Geological Survey (USGS) gauge site of each watershed were downloaded using the `dataRetrieval` package in R, which was created to retrieve hydrologic data from the USGS and Water Quality Portal (WQP) and load into R. With the aid of the `tidyverse` package, data were transformed, converted to appropriate units, and summarized per water year. The data were normalized by drainage area and expressed as basin runoff (mm).
@@ -80,7 +84,7 @@ In order to filter the boundaries for the remote-sensed data that would be downl
 
 ### Remote-sensed predictors: ET, PET, soil moisture, monthly maximum temperature
 
-For these remote-sensed predictors, the `rgee` package was used to access their data from Google Earth Engine using the R interface. These were all retrieved from TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho (Abatzoglou et al., 2018). TerraClimate provides monthly data on climatic water balance for global terrestrial surfaces at a resolution of 4638.3 meters. The data set has 14 bands corresponding to different meteorological parameters.
+For these remote-sensed predictors, the `rgee` package was used to access their data from Google Earth Engine using the R interface. These were all retrieved from TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho (Abatzoglou et al., 2018). TerraClimate provides monthly data on climatic water balance for global terrestrial surfaces at a resolution of 4638.3 meters. The data set has 14 bands corresponding to different meteorological parameters and its record covers 1958-01-01 to 2021-12-01, making it a good potential source of remote-sensed meteorological parameters that can be used to build predictive models that can fill in gaps in ground data. 
 
 ### Remote-sensed predictors: Normalized Difference Vegetation Index (NDVI)
 
@@ -164,6 +168,9 @@ _**Figure 5.** Comparison of evapotranspiration computed using water balance met
 
 Multiple linear regression of all predictor variables with the water balance ET indicate the significance of precipitation to be included in predictive models (Table 3). This is further confirmed among the “best” models selected for each watershed (Table 4), wherein precipitation is consistently included and a significant variable in the model. Precipitation also shows the similar trend with water-balance evapotranspiration (Figure 6). On the other hand, PET and monthly maximum temperature are also consistently highly collinear, which can be expected since the PET from TerraClimate was derived using ASCE Penman-Monteith model, which uses air temperature in its equation, and at the same time, higher temperatures are known to increase rate of evaporation.
 
+Adjusted R<sup>2</sup> ranged from 0.1013 to 0.7695, with the model for Oyster River, NH that includes precipitatoin and PET performing most poorly and the model for North Fork Edisto, SC that includes precipitation and NDVI performing the "best".
+
+
 _**Table 3.** Predictor variables and their corresponding coefficient estimates and p-values in multiple linear regression model wherein all predictors are regressed against the water-balance evapotranspiration. Cells in light blue are the variables that are significant at alpha = 0.05_
 
 ![Screenshot 2022-12-15 at 20 50 51](https://user-images.githubusercontent.com/95758941/208003548-668b20f4-826d-4b02-b219-b1805fae8a59.png)
@@ -192,9 +199,28 @@ _**Figure 7.** Predicted versus observed (water balance) annual evapotranspirati
 
 # Discussion
 
+### Water balance ET vs remote-sensed ET
+
+The evapotranspiration derived from water balance method is significantly different from the evapotranspiration derived from remote-sensed data. Since the water balance ET computed for this project was limited to data from one discharge and one precipitation gauge site, it may be inappropriate to compare the two data sets as the method employed already misses out variations across the entire watershed that may improve the estimate. On the other hand, remote-sensed data from TerraClimate may also have its limitations as stated in their [Google Earth Engine catalog](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description): data is inherited from parent datasets, do not capture temporal variability at finer scales than parent datasets, and the water balance model used is very simple and does not account for heteregeneity in vegetation types. Nonethelss, the absence of big peaks/lows and data jumps in the remote-sensed ET (Figure 5) suggests that it can be a more reliable estimate of evapotranspiration.
+
+### Potential controls on ET
+
+The variables included in the "best" model for each watershed varies but precipitation is consistently a significant predictor. This can be expected since precipitation provides the water and moisture and ET generally uses a large fraction of this. Other than precipitation, PET, soil moisture, and NDVI also aided in improving a model's performance, hence, suggesting their importance in explaning variabilities in ET. The model with the highest adjusted R<sup>2</sup> is for the North Fork Edisto, SC watershed, which includes precipitation and NDVI among its predictor variables. Aside from precipitation, NDVI can also be a good predictor since it represents vegetation activity within the watershed. Dense vegetation (high NDVI) indicates larger surface area available for transpiration to occur, hence, affecting annual evapotranspiration measurements. Again, since accuracy in the water balance ET that is used as the dependent variable in the regression models is potentially low, these models may not really be fully representing the drivers of ET variability in these watersheds.
+
+
+
 # Conclusion
 
+This project analyzed the difference between evapotranspiration derived using the water balance equation versus remote-sensed data, as well as its potential controls among the available meteorological parameters from an extensive remote-sensed data set, particularly precipitation, PET, soil moisture, maximum temperature, and NDVI. This was to come up with a model that can rely on available remote-sensed data to fill in gaps in ground data, as well as to identify drivers of ET. Annual water balance ET was found to be significantly different from annual remote-sensed ET across all watersheds. Consistently, precipitation was found to be an important predictor across all the "best" models from each watershed. While model residuals are normal, poor adjusted R<sup>2</sup> values indicate that the included variables are not explaining variations in ET very well.  In addition, this suggest that other more important parameters that were not explored could be missing in the models to make them better at predicting ET.
+
+
 # Moving forward
+
+The results of this study is highly limited by the quality of the data that were obtained. Moving forward, the following can be done to improve the entire project:
+1. improving the computed water balance ET by using data from multiple gauge sites within the watershed instead of relying on stations at or close to the outlet;
+2. quality check on the downloaded remote-sensed data and exploration of other data sets other than TerraClimate;
+3. extending data length in order to improve training and testing data for regression models.
+
 
 # References
 
