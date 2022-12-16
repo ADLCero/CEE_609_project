@@ -23,13 +23,13 @@ library(ggpubr)
 
 # Note: file paths have to be changed by the user.
 
-OysterNH_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/OysterNH_data.csv")
-WappingerNY_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/WappingerNY_data.csv")
-BrandywinePA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/BrandywinePA_data.csv")
-MechumsVA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/MechumsVA_data.csv")
-FlatNC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/FlatNC_data.csv")
-NorthForkSC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/NorthForkSC_data.csv")
-IchawayGA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_data.csv")
+OysterNH_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/OysterNH_data.csv")
+WappingerNY_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/WappingerNY_data.csv")
+BrandywinePA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/BrandywinePA_data.csv")
+MechumsVA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/MechumsVA_data.csv")
+FlatNC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/FlatNC_data.csv")
+NorthForkSC_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/NorthForkSC_data.csv")
+IchawayGA_data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/IchawayGA_data.csv")
 
 ```
 
@@ -679,12 +679,11 @@ OysterNH_precip_AET <- ggplot(data = OysterNH_data2) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#a6cee3",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "Oyster River, NH") +
   
@@ -704,12 +703,11 @@ WappingerNY_precip_AET <- ggplot(data = WappingerNY_data2) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#1f78b4",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "Wappinger Creek, NY") +
   
@@ -729,12 +727,11 @@ BrandywinePA_precip_AET <- ggplot(data = BrandywinePA_data) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#b2df8a",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "Brandywine Creek, PA") +
   
@@ -754,12 +751,11 @@ MechumsVA_precip_AET <- ggplot(data = MechumsVA_data) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#33a02c",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "Mechums River, VA") +
   
@@ -779,12 +775,11 @@ FlatNC_precip_AET <- ggplot(data = FlatNC_data) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#fb9a99",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "Flat River, NC") +
   
@@ -804,12 +799,11 @@ NorthForkSC_precip_AET <- ggplot(data = NorthForkSC_data) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#e31a1c",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "North Fork Edisto, SC") +
   
@@ -829,12 +823,11 @@ IchawayGA_precip_AET <- ggplot(data = IchawayGA_data) +
     geom_smooth(aes(x = water_year, y = RS_annual_total_precip, color = "remote-sensed precipitation"), method = "lm", se = FALSE) +
   
   scale_color_manual(name = NULL,
-                     values = c("water balance ET" = "#fdbf6f",
-                                "remote-sensed precipitation" = "black"),
-                     breaks = c("remote-sensed precipitation")) +
+                     values = c("water balance ET" = "black",
+                                "remote-sensed precipitation" = "skyblue3")) +
   
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  #scale_y_continuous(breaks = seq(-700, 2000, 500), limits = c(-700, 2000)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
   
   labs(title = "Ichawaynochaway, GA") +
   
@@ -877,6 +870,239 @@ precip_AET_annotated
 
 ggsave(filename = "precip_AET_comparison.png",
        plot = precip_AET_annotated,
+       device = "png",
+       path = '2_final_figures',
+       width = 10,
+       height = 7,
+       units = "in",
+       dpi = 200,
+       bg = "white")
+```
+
+
+### Read in the .csv files containing the model predictions for each watershed:
+
+```{r}
+
+# Note: file paths have to be changed by the user.
+
+OysterNH_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/OysterNH_pred.csv")
+WappingerNY_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/WappingerNY_pred.csv")
+BrandywinePA_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/BrandywinePA_pred.csv")
+MechumsVA_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/MechumsVA_pred.csv")
+FlatNC_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/FlatNC_pred.csv")
+NorthForkSC_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/NorthForkSC_pred.csv")
+IchawayGA_pred <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_pred.csv")
+
+```
+
+&nbsp;
+
+### PLOT: Predicted vs observed WBET
+
+```{r}
+
+# Oyster NH
+
+OysterNH_pred2 <- ggplot(data = OysterNH_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#a6cee3"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "Oyster River, NH") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# Wappinger NY
+
+WappingerNY_pred2 <- ggplot(data = WappingerNY_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#1f78b4"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "Wappinger Creek, NY") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# BrandywinePA
+
+BrandywinePA_pred2 <- ggplot(data = BrandywinePA_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#b2df8a"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "Brandywine Creek, PA") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# Mechums VA
+
+MechumsVA_pred2 <- ggplot(data = MechumsVA_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#33a02c"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "Mechums River, VA") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# FlatNC
+
+FlatNC_pred2 <- ggplot(data = FlatNC_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#fb9a99"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "Flat River, NC") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# NorthFork SC
+
+NorthForkSC_pred2 <- ggplot(data = NorthForkSC_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#e31a1c"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "North Fork Edisto, SC") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# IchawayGA
+
+IchawayGA_pred2 <- ggplot(data = IchawayGA_pred) +
+  geom_point(aes(x = water_year, y = obs_wbet, color = "observed water balance ET")) +
+  geom_point(aes(x = water_year, y = pred_wbet, color = "predicted ET")) +
+  geom_smooth(aes(x = water_year, y = pred_wbet, color = "predicted ET"), method = "lm", se = FALSE) +
+  
+  scale_color_manual(name = NULL,
+                     values = c("observed water balance ET" = "black",
+                                "predicted ET" = "#fdbf6f"),
+                     breaks = c("observed water balance ET")) +
+  
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(breaks = seq(0, 2000, 500), limits = c(0, 2000)) +
+  
+  labs(title = "Ichawaynochaway, GA") +
+  
+  theme_bw() +
+  
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+
+# Combine plots
+
+predictions <- ggarrange(OysterNH_pred2,
+          WappingerNY_pred2,
+          BrandywinePA_pred2,
+          MechumsVA_pred2,
+          FlatNC_pred2,
+          NorthForkSC_pred2,
+          IchawayGA_pred2,
+          ncol = 3,
+          nrow = 3, common.legend = TRUE)
+
+
+# Annotate figure
+
+predictions_annotated <- annotate_figure(predictions,
+                                         left = text_grob("annual evapotranspiration (mm)", rot = 90),
+                                         bottom = text_grob("water year"))
+
+predictions_annotated
+
+
+```
+
+
+**Caption:** Predicted versus observed annual evapotranspiration
+
+```{r}
+
+# Export the plot as png
+
+ggsave(filename = "predictions.png",
+       plot = predictions_annotated,
        device = "png",
        path = '2_final_figures',
        width = 10,

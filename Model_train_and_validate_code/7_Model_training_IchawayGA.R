@@ -25,7 +25,7 @@ library(MASS)     # for performing stepwise regression
 
 # Read in data
 
-data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_data.csv", header = T)
+data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/IchawayGA_data.csv", header = T)
 
 # Make a new data frame that includes only the following variables as predictors:
 # 1) RS_annual_total_precip = remote-sensed precipitation data (mm), total for the water year, from TerraClimate
@@ -502,3 +502,16 @@ hist(residuals2)
 shapiro.test(residuals2)
 
 # Shapiro-Wilk test indicates that residuals are normally distributed
+
+#------------------------------------------------------------------------------#
+
+# FILE OUTPUT:
+
+IchawayGA_pred <- data.frame(water_year = IchawayGA_train$water_year,
+                               obs_wbet = IchawayGA_train$WB_annual_total_aet,
+                               pred_wbet = pred_IchawayGA_aet,
+                               residuals = residuals(IchawayGA_m4))
+
+write.csv(IchawayGA_pred, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_pred.csv",
+          row.names = FALSE)
+

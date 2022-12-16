@@ -42,6 +42,12 @@ Others:
 = the package used (USGS StreamStats) to download the watershed boundaries does not work (for some unknown reasons) for this site. This .txt file contains the instructions on how to download the shape file from the USGS StreamStats website.
 
 
+Folder:
+
+Data
+= contains the watershed boundary files and the output CSV files (data frames of predictand and predictors)
+
+
 
 NOTES:
 

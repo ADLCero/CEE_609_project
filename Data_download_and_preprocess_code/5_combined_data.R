@@ -280,41 +280,41 @@ colnames(IchawayGA_data) <- c("water_year",
 
 # OysterNH
 
-write.csv(OysterNH_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/OysterNH_data.csv",
+write.csv(OysterNH_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/OysterNH_data.csv",
           row.names = FALSE)
 
 
 # WappingerNY
 
-write.csv(WappingerNY_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/WappingerNY_data.csv",
+write.csv(WappingerNY_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/WappingerNY_data.csv",
           row.names = FALSE)
 
 
 # BrandywinePA
 
-write.csv(BrandywinePA_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/BrandywinePA_data.csv",
+write.csv(BrandywinePA_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/BrandywinePA_data.csv",
           row.names = FALSE)
 
 
 # MechumsVA
 
-write.csv(MechumsVA_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/MechumsVA_data.csv",
+write.csv(MechumsVA_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/MechumsVA_data.csv",
           row.names = FALSE)
 
 
 # FlatNC
 
-write.csv(FlatNC_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/FlatNC_data.csv",
+write.csv(FlatNC_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/FlatNC_data.csv",
           row.names = FALSE)
 
 
 # NorthForkSC
 
-write.csv(NorthForkSC_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/NorthForkSC_data.csv",
+write.csv(NorthForkSC_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/NorthForkSC_data.csv",
           row.names = FALSE)
 
 
 # IchawayGA
 
-write.csv(IchawayGA_data, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/IchawayGA_data.csv",
+write.csv(IchawayGA_data, "/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/IchawayGA_data.csv",
           row.names = FALSE)

@@ -25,7 +25,7 @@ library(MASS)     # for performing stepwise regression
 
 # Read in data
 
-data <- read.csv("/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/NorthForkSC_data.csv", header = T)
+data <- read.csv("/Users/amyeldalecero/CEE_609_project/Data_download_and_preprocess_code/data/NorthForkSC_data.csv", header = T)
 
 # Make a new data frame that includes only the following variables as predictors:
 # 1) RS_annual_total_precip = remote-sensed precipitation data (mm), total for the water year, from TerraClimate
@@ -388,3 +388,16 @@ hist(residuals2)
 shapiro.test(residuals2)
 
 # Shapiro-Wilk test indicates that residuals are normally distributed
+
+#------------------------------------------------------------------------------#
+
+# FILE OUTPUT:
+
+NorthForkSC_pred <- data.frame(water_year = NorthForkSC_train$water_year,
+                          obs_wbet = NorthForkSC_train$WB_annual_total_aet,
+                          pred_wbet = pred_NorthForkSC_aet,
+                          residuals = residuals(NorthForkSC_m5))
+
+write.csv(NorthForkSC_pred, "/Users/amyeldalecero/CEE_609_project/Model_train_and_validate_code/data/NorthForkSC_pred.csv",
+          row.names = FALSE)
+

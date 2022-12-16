@@ -26,5 +26,5 @@ Scripts for each watershed were separated since model selection process greatly 
 FOLDER/S:
 
 1. data
-= contains the .csv files of the predictand and predictors for each of the seven watersheds; this will allow the user to proceed to model training and validation without running the prior scripts under data download and pre-process code
+= contains the .csv files of the model predictions and residuals
 
