@@ -118,3 +118,62 @@ _**Figure .** Predicted versus observed (water balance) annual evapotranspiratio
 # References
 
 # R packages
+
+Aybar C (2022). _rgee: R Bindings for Calling the 'Earth Engine' API_. R package version 1.1.5,
+  <https://CRAN.R-project.org/package=rgee>.
+
+Chamberlain S (2021). _rnoaa: 'NOAA' Weather Data from R_. R package version 1.3.8,
+  <https://CRAN.R-project.org/package=rnoaa>.
+
+De Cicco, L.A., Hirsch, R.M., Lorenz, D., Watkins, W.D., 2022, dataRetrieval: R packages for discovering and
+  retrieving water data available from Federal hydrologic web services, v.2.7.11, doi:10.5066/P9X4L3GE
+
+Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with lubridate. Journal of Statistical
+  Software, 40(3), 1-25. URL https://www.jstatsoft.org/v40/i03/.
+
+Hagemann M (2022). _streamstats: R bindings to the USGS Streamstats API_. R package version 0.0.3.
+
+Henry L, Wickham H (2022). _purrr: Functional Programming Tools_. R package version 0.3.5,
+  <https://CRAN.R-project.org/package=purrr>.
+  
+Fox, J. and Weisberg, S. (2019). An {R} Companion to Applied Regression, Third Edition. Thousand Oaks CA:
+  Sage. URL: https://socialsciences.mcmaster.ca/jfox/Books/Companion/
+  
+Kassambara A (2022). _ggpubr: 'ggplot2' Based Publication Ready Plots_. R package version 0.5.0,
+  <https://CRAN.R-project.org/package=ggpubr>.
+
+Miller TLboFcbA (2020). _leaps: Regression Subset Selection_. R package version 3.1,
+  <https://CRAN.R-project.org/package=leaps>.
+
+Müller K, Wickham H (2022). _tibble: Simple Data Frames_. R package version 3.1.8,
+  <https://CRAN.R-project.org/package=tibble>.
+  
+Pebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1),
+  439-446, https://doi.org/10.32614/RJ-2018-009
+
+R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical
+  Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+Spinu V (2022). _timechange: Efficient Manipulation of Date-Times_. R package version 0.1.1,
+  <https://CRAN.R-project.org/package=timechange>.
+  
+Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York.
+  ISBN 0-387-95457-0
+
+Wickham H, François R, Henry L, Müller K (2022). _dplyr: A Grammar of Data Manipulation_. R package version
+  1.0.10, <https://CRAN.R-project.org/package=dplyr>.
+
+Wickham H (2022). _forcats: Tools for Working with Categorical Variables (Factors)_. R package version 0.5.2,
+  <https://CRAN.R-project.org/package=forcats>.
+
+Wickham H. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+
+Wickham H, Hester J, Bryan J (2022). _readr: Read Rectangular Text Data_. R package version 2.1.3,
+  <https://CRAN.R-project.org/package=readr>.
+
+Wickham H (2022). _stringr: Simple, Consistent Wrappers for Common String Operations_. R package version 1.4.1,
+  <https://CRAN.R-project.org/package=stringr>.
+  
+Wickham H, Girlich M (2022). _tidyr: Tidy Messy Data_. R package version 1.2.1,
+  <https://CRAN.R-project.org/package=tidyr>.
+  
