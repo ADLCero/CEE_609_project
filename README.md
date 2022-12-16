@@ -41,7 +41,7 @@ _**Figure 1.** Framework of the study_
 
 # Data and methods
 
-**Table 1.** Selected watersheds that represent areas from north to south of US' eastern region
+_**Table 1.** Selected watersheds that represent areas from north to south of US' eastern region_
 
 | Watershed  | USGS Site Number | Drainage area (km<sup>2</sup>) |
 | ------------- | ------------- | ------------- |
@@ -66,14 +66,41 @@ _**Figure 2.** Methodological framework of the study. Important R packages used 
 
 # Results
 
+![predictors](https://user-images.githubusercontent.com/95758941/208009974-56da6ee2-ea50-4b7d-8b01-82d5220e4467.png)
+_**Figure .** Annual total precipitation, total potential evapotranspiration, total soil moisture, average monthly maximum temperature, and maximum NDVI from water years 1990-2020_
+
+&nbsp;
+
+![annual_WB_ET](https://user-images.githubusercontent.com/95758941/208010232-923119f8-486d-4c04-92d2-fc6dbc3f5e74.png)
+_**Figure .** Annual evapotranspiration from water years 1990-2020 computed using water balance method_
+
+
+&nbsp;
+
+![ET_comparison](https://user-images.githubusercontent.com/95758941/208010476-4a8f8888-03da-452a-af52-ef0ed332883a.png)
+_**Figure .** Comparison of evapotranspiration computed using water balance method and evapotranspiration from remote-sensed data_
+
+&nbsp;
+
+
+_**Table .** Predictor variables and their corresponding coefficient estimates and p-values in multiple linear regression model wherein all predictors are regressed against the water-balance evapotranspiration. Cells in light blue are the variables that are significant at alpha = 0.05_
+
 ![Screenshot 2022-12-15 at 20 50 51](https://user-images.githubusercontent.com/95758941/208003548-668b20f4-826d-4b02-b219-b1805fae8a59.png)
 
 
 &nbsp;
 
+_**Table .** Final regression model of each watershed_
 ![Screenshot 2022-12-15 at 20 58 29](https://user-images.githubusercontent.com/95758941/208004549-51b71f50-47ab-41a5-a239-398cfd31ab44.png)
 
 \* Only precipitation is the significant variable
+
+&nbsp;
+
+![precip_AET_comparison](https://user-images.githubusercontent.com/95758941/208011143-a7f76535-839b-4f69-8209-fb22eeaeab9d.png)
+_**Figure .** Trends in remote-sensed precipitation and water-balance evapotranspiration_
+
+&nbsp;
 
 # Discussion
 
