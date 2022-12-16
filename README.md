@@ -21,10 +21,16 @@ Each folder has their corresponding "data" folder where the outputs are stored. 
 
 # Introduction
 
+Evapotranspiration is the process of water movement from the surface of the earth to the atmosphere. It is a combination of evaporation from land surfaces and transpiration from plants and can be classified into actual (real flow of water from surface to atmosphere) and potential (demand if water availability is not restricted). 
+
+Assessing trends in evapotranspiration, a crucial component in water and energy cycles, is important in understanding and identifying changes occurring in global and local terrestrial ecosystem water balance that can be anthropogenically influenced. However, quantifying and mapping spatiotemporal distribution of ET is still also a challenge and this limits the availability of accurate ET estimates necessary in making important irrigation and management decisions (Bhattarai and Wagle, 2021). 
+
+There is a wide variety of methods in estimating actual evapotranspiration using satellite-based methods and there is no consensus on which one is the best as they all come with both advantages and limitations (Zhang et al., 2016). There has also been effort in assessing trends in ET and the water balance method (i.e. subtracting the annual discharge from annual precipitation) can be a robust approach although it remains to be limited in use (Duethmann & Blöschl, 2018). A study using this approach identified that in the eastern US, ET varied systematically across climate gradient: there is a strong positive actual evapotranspiration trends in cooler regions and weak to neutral trends in warmer areas (Vadeboncoeur et al., 2018). On the other hand, an approach using a process-based ecosystem model found an increasing trend in Annual ET during 1901-2008 in the same region and that climate change determined the spatial pattern of ET changes (Yang et al., 2014). Although not in the eastern US, water balance ET can also be consistent with ET derived using energy balance models, especially in regions with water-limited ET and if interannual variability is low (Carter et al., 2018).
 
 
+Findings like these are significant to various sectors and are valuable in policy making, thus, emphasizing the importance of deriving accurate ET estimates. In the absence of access to remote-sensed data, the water-balance method may be the fastest and easiest way to compute for ET but this method is presented with challenges as there may be instances that there are gaps and errors in discharge and precipitation data. This therefore brings the need to establish predictive ET models that can fill in data gaps and extrapolate data and at the same time, does not require extensive data input, making it usable for water managers and decision makers. 
 
-### Research Questions:
+This project aimed to develop simple regression models that can predict evapotranspiration in watersheds that represent different climatological conditions across the eastern region of US. Specifically, it sought to answer the following questions: 
 
 1. How does the annual actual evapotranspiration (ET) calculated using the water balance approach compare to remotely-sensed evapotranspiration?
 2. What are the trends in ET that are revealed by these data sets?
@@ -34,6 +40,7 @@ Each folder has their corresponding "data" folder where the outputs are stored. 
     - soil moisture;
     - average monthly maximum temperature;
     - vegetation activity (Normalized Difference Vegetation Index (NDVI))?
+
 
 &nbsp;
 
@@ -84,7 +91,7 @@ In order to filter the boundaries for the remote-sensed data that would be downl
 
 ### Remote-sensed predictors: ET, PET, soil moisture, monthly maximum temperature
 
-For these remote-sensed predictors, the `rgee` package was used to access their data from Google Earth Engine using the R interface. These were all retrieved from TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho (Abatzoglou et al., 2018). TerraClimate provides monthly data on climatic water balance for global terrestrial surfaces at a resolution of 4638.3 meters. The data set has 14 bands corresponding to different meteorological parameters and its record covers 1958-01-01 to 2021-12-01, making it a good potential source of remote-sensed meteorological parameters that can be used to build predictive models that can fill in gaps in ground data. 
+For these remote-sensed predictors, the `rgee` package was used to access their data from Google Earth Engine using the R interface. These were all retrieved from TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho (Abatzoglou et al., 2018). TerraClimate provides monthly data on climatic water balance for global terrestrial surfaces at a resolution of 4638.3 meters. The data set has 14 bands corresponding to different meteorological parameters and its record covers 1958-01-01 to 2021-12-01, making it a good potential source of remote-sensed meteorological parameters that can be used to build predictive models that can fill in gaps in ground data. The actual evapotranspiration from this data set was derived using a one-dimensional soil water balance model while the PET was derived from ASCE Penman-Montieth. Likewise, soil moisture was also derived from a one-dimensional soil water balance model.
 
 ### Remote-sensed predictors: Normalized Difference Vegetation Index (NDVI)
 
@@ -201,7 +208,7 @@ _**Figure 7.** Predicted versus observed (water balance) annual evapotranspirati
 
 ### Water balance ET vs remote-sensed ET
 
-The evapotranspiration derived from water balance method is significantly different from the evapotranspiration derived from remote-sensed data. Since the water balance ET computed for this project was limited to data from one discharge and one precipitation gauge site, it may be inappropriate to compare the two data sets as the method employed already misses out variations across the entire watershed that may improve the estimate. On the other hand, remote-sensed data from TerraClimate may also have its limitations as stated in their [Google Earth Engine catalog](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description): data is inherited from parent datasets, do not capture temporal variability at finer scales than parent datasets, and the water balance model used is very simple and does not account for heteregeneity in vegetation types. Nonethelss, the absence of big peaks/lows and data jumps in the remote-sensed ET (Figure 5) suggests that it can be a more reliable estimate of evapotranspiration.
+The evapotranspiration derived from water balance method is significantly different from the evapotranspiration derived from remote-sensed data. Since the water balance ET computed for this project was limited to data from one discharge and one precipitation gauge site, it may be inappropriate to compare the two data sets as the method employed already misses out variations across the entire watershed that may improve the estimate. On the other hand, remote-sensed data from TerraClimate may also have its limitations as stated in their [Google Earth Engine catalog](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description): data is inherited from parent datasets, do not capture temporal variability at finer scales than parent datasets, and the water balance model used is very simple and does not account for heteregeneity in vegetation types. Nonetheless, the absence of big peaks/lows and data jumps in the remote-sensed ET (Figure 5) suggests that it can be a more reliable estimate of evapotranspiration. 
 
 ### Potential controls on ET
 
@@ -224,9 +231,20 @@ The results of this study is highly limited by the quality of the data that were
 
 # References
 
+Bhattarai, N., & Wagle, P. (2021). Recent Advances in Remote Sensing of Evapotranspiration. Remote Sensing, 13(21), 4260. https://doi.org/10.3390/rs13214260
+
 Carter, E., Hain, C., Anderson, M., & Steinschneider, S. (2018). A Water Balance–Based, Spatiotemporal Evaluation of Terrestrial Evapotranspiration Products across the Contiguous United States. Journal of Hydrometeorology, 19(5), 891–905. https://doi.org/10.1175/JHM-D-17-0186.1
 
+Duethmann, D., & Blöschl, G. (2018). Why has catchment evaporation increased in the past 40 years? A data-based study in Austria. Hydrology and Earth System Sciences, 22(10), 5143–5158. https://doi.org/10.5194/hess-22-5143-2018
+
+Vadeboncoeur, M. A., Green, M. B., Asbjornsen, H., Campbell, J. L., Adams, M. B., Boyer, E. W., Burns, D. A., Fernandez, I. J., Mitchell, M. J., & Shanley, J. B. (2018). Systematic variation in evapotranspiration trends and drivers across the Northeastern United States. Hydrological Processes, 32(23), 3547–3560. https://doi.org/10.1002/hyp.13278
+
 VanderPlas, J. (2016, November). What Is Machine Learning? | Python Data Science Handbook. https://jakevdp.github.io/PythonDataScienceHandbook/05.01-what-is-machine-learning.html
+
+Yang, Q., Tian, H., Li, X., Tao, B., Ren, W., Chen, G., Lu, C., Yang, J., Pan, S., Banger, K., & Zhang, B. (2015). Spatiotemporal patterns of evapotranspiration along the North American east coast as influenced by multiple environmental changes. Ecohydrology, 8(4), 714–725. https://doi.org/10.1002/eco.1538
+
+Zhang, K., Kimball, J. S., & Running, S. W. (2016). A review of remote sensing based actual evapotranspiration estimation. WIREs Water, 3(6), 834–853. https://doi.org/10.1002/wat2.1168
+
 
 
 # Data sources
