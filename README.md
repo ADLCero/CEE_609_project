@@ -67,6 +67,7 @@ _**Table 1.** Selected watersheds that represent areas from north to south of US
 | Ichawaynochaway, Georgia  | 02353500  |  1605.79  |
 
 <img width="758" alt="Screenshot 2022-12-16 at 11 44 04" src="https://user-images.githubusercontent.com/95758941/208147304-42743409-2286-431e-9249-a8141896e1b6.png">
+
 _**Figure 2.** Location map of the watersheds_
 
 
