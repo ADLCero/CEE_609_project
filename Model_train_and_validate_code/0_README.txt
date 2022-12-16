@@ -23,6 +23,11 @@ Scripts for each watershed were separated since model selection process greatly 
 7_Model_training_IchawayGA.R
 
 
+8_Other_statistics.R
+= script for the other statistical tests done to describe the data
+
+
+
 FOLDER/S:
 
 1. data
