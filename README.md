@@ -187,7 +187,7 @@ _**Figure 6.** Comparison of evapotranspiration computed using water balance met
 &nbsp;
 
 
-Multiple linear regression of all predictor variables with the water balance ET indicate the significance of precipitation to be included in predictive models (Table 3). This is further confirmed among the “best” models selected for each watershed (Table 4), wherein precipitation is consistently included and a significant variable in the model. Precipitation also shows the similar trend with water-balance evapotranspiration (Figure 6). On the other hand, PET and monthly maximum temperature are also consistently highly collinear, which can be expected since the PET from TerraClimate was derived using ASCE Penman-Monteith model, which uses air temperature in its equation, and at the same time, higher temperatures are known to increase rate of evaporation.
+Multiple linear regression of all predictor variables with the water balance ET indicate the significance of precipitation to be included in predictive models (Table 3). This is further confirmed among the “best” models selected for each watershed (Table 4), wherein precipitation is consistently included and a significant variable in the model. Precipitation also shows the similar trend with water-balance evapotranspiration (Figure 7). On the other hand, PET and monthly maximum temperature are also consistently highly collinear, which can be expected since the PET from TerraClimate was derived using ASCE Penman-Monteith model, which uses air temperature in its equation, and at the same time, higher temperatures are known to increase rate of evaporation.
 
 Adjusted R<sup>2</sup> ranged from 0.1013 to 0.7695, with the model for Oyster River, NH that includes precipitation and PET performing most poorly and the model for North Fork Edisto, SC that includes precipitation and NDVI performing the "best".
 
@@ -207,12 +207,12 @@ _**Table 4.** Final regression model of each watershed_
 &nbsp;
 
 ![precip_AET_comparison](https://user-images.githubusercontent.com/95758941/208030702-81b7e757-d825-42cb-b3f7-fc9051ea3f3e.png)
-_**Figure 6.** Trends in remote-sensed precipitation and water-balance evapotranspiration._
+_**Figure 7.** Trends in remote-sensed precipitation and water-balance evapotranspiration._
 
 &nbsp;
 
 ![predictions](https://user-images.githubusercontent.com/95758941/208029377-ead17096-f412-49f8-816b-502226b6bce5.png)
-_**Figure 7.** Predicted versus observed (water balance) annual evapotranspiration. Points in black are the computed water balance ET while points in color are the predicted values using the "best" regression model for each watershed._
+_**Figure 8.** Predicted versus observed (water balance) annual evapotranspiration. Points in black are the computed water balance ET while points in color are the predicted values using the "best" regression model for each watershed._
 
 
 
