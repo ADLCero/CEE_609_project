@@ -66,10 +66,16 @@ _**Table 1.** Selected watersheds that represent areas from north to south of US
 | North Fork Edisto, South Carolina  | 02173500  |  1768.96  |
 | Ichawaynochaway, Georgia  | 02353500  |  1605.79  |
 
+<img width="758" alt="Screenshot 2022-12-16 at 11 44 04" src="https://user-images.githubusercontent.com/95758941/208147304-42743409-2286-431e-9249-a8141896e1b6.png">
+_**Figure 2.** Location map of the watersheds_
+
+
+
+&nbsp;
 
 ## Data download and pre-processing
 
-For each variable, 31 water years (1990-2020) of data were obtained. A water year is defined as the 12-month period from October 1st to September 30th of the following year (ex. October 1, 2021 to September 30, 2022 belongs to water year 2022). This is mostly used in the analysis of hydrological data to take into account that fall season is consistently the driest period and when interannual variations in storage will be the smallest. Table 2 and Figure 2 summarizes the different data that were used in this project and the corresponding R package that were used to access and download them.
+For each variable, 31 water years (1990-2020) of data were obtained. A water year is defined as the 12-month period from October 1st to September 30th of the following year (ex. October 1, 2021 to September 30, 2022 belongs to water year 2022). This is mostly used in the analysis of hydrological data to take into account that fall season is consistently the driest period and when interannual variations in storage will be the smallest. Table 2 and Figure 3 summarizes the different data that were used in this project and the corresponding R package that were used to access and download them.
 
 ### Water-balance evapotranspiration
 
@@ -149,32 +155,32 @@ Graphical representations of the predictors and models were created using the `g
 &nbsp;
 
 ![Data_Methods2](https://user-images.githubusercontent.com/95758941/208135950-3b60695a-3889-4e7e-b602-7628591b1321.png)
-_**Figure 2.** Methodological framework of the study. Important R packages used are in the orange rectangles._
+_**Figure 3.** Methodological framework of the study. Important R packages used are in the orange rectangles._
 
 # Results
 
-Trends in the predictor variables, particularly for annual total potential evapotranspiration and average monthly maximum temperature show the expected difference in the climatic profile among the watersheds depending on their location (i.e., higher PET and temperature at watersheds in lower latitude). It is important to note that for NDVI, while the trend is consistent (higher NDVI at watersheds in higher latitude), the values coming from LANDSAT differ by approximately less than 0.1 compared to the values that come from MODIS. This gap is even wider among annual average NDVI, hence, the decision to use the maximum NDVI instead in the regression analysis (Figure 3).
+Trends in the predictor variables, particularly for annual total potential evapotranspiration and average monthly maximum temperature show the expected difference in the climatic profile among the watersheds depending on their location (i.e., higher PET and temperature at watersheds in lower latitude). It is important to note that for NDVI, while the trend is consistent (higher NDVI at watersheds in higher latitude), the values coming from LANDSAT differ by approximately less than 0.1 compared to the values that come from MODIS. This gap is even wider among annual average NDVI, hence, the decision to use the maximum NDVI instead in the regression analysis (Figure 4).
 
 
 ![predictors](https://user-images.githubusercontent.com/95758941/208009974-56da6ee2-ea50-4b7d-8b01-82d5220e4467.png)
-_**Figure 3.** Annual total precipitation, total potential evapotranspiration, total soil moisture, average monthly maximum temperature, and maximum NDVI from water years 1990-2020_
+_**Figure 4.** Annual total precipitation, total potential evapotranspiration, total soil moisture, average monthly maximum temperature, and maximum NDVI from water years 1990-2020_
 
 &nbsp;
 
-The computed evapotranspiration using water balance method in some of the watersheds (Oyster River, NH and Wappinger Creek, NY) yielded negative values, which can potentially be due to discrepancies in the precipitation and discharge data. These negative values were omitted from the data prior to making the models as they do not accurately represent expected evapotranspiration values. Most of the computed water balance evapotranspiration reveal a slight increase in trend from water year 1990 to 2020 (Figure 4). The average annual water balance ET ranges from 505 to 943 mm, with the lowest in Wappinger Creek, NY and the highest in North Fork Edisto, SC.
+The computed evapotranspiration using water balance method in some of the watersheds (Oyster River, NH and Wappinger Creek, NY) yielded negative values, which can potentially be due to discrepancies in the precipitation and discharge data. These negative values were omitted from the data prior to making the models as they do not accurately represent expected evapotranspiration values. Most of the computed water balance evapotranspiration reveal a slight increase in trend from water year 1990 to 2020 (Figure 5). The average annual water balance ET ranges from 505 to 943 mm, with the lowest in Wappinger Creek, NY and the highest in North Fork Edisto, SC.
 
 
 ![annual_WB_ET](https://user-images.githubusercontent.com/95758941/208010232-923119f8-486d-4c04-92d2-fc6dbc3f5e74.png)
-_**Figure 4.** Annual evapotranspiration from water years 1990-2020 computed using water balance method_
+_**Figure 5.** Annual evapotranspiration from water years 1990-2020 computed using water balance method_
 
 
 &nbsp;
 
-Comparison of water balance ET with remote-sensed ET shows a more steady trend across the record in the remote-sensed data compared to high variations in the water-balance derived data (Figure 5). Test for equality of variances between the two data sets among all watersheds indicate that their variances are not equal, with the ratio ranging from 0.03 to 0.11 (i.e. ratio closer to 1 indicates closer similarity in variance). On the other hand, t-test of their means indicate that in all watersheds, the means of the water-balance ET and the remote-sensed ET are significantly different. This indicate that the two data sets are highly different.
+Comparison of water balance ET with remote-sensed ET shows a more steady trend across the record in the remote-sensed data compared to high variations in the water-balance derived data (Figure 6). Test for equality of variances between the two data sets among all watersheds indicate that their variances are not equal, with the ratio ranging from 0.03 to 0.11 (i.e. ratio closer to 1 indicates closer similarity in variance). On the other hand, t-test of their means indicate that in all watersheds, the means of the water-balance ET and the remote-sensed ET are significantly different. This indicate that the two data sets are highly different.
 
 
 ![ET_comparison](https://user-images.githubusercontent.com/95758941/208010476-4a8f8888-03da-452a-af52-ef0ed332883a.png)
-_**Figure 5.** Comparison of evapotranspiration computed using water balance method and evapotranspiration from remote-sensed data_
+_**Figure 6.** Comparison of evapotranspiration computed using water balance method and evapotranspiration from remote-sensed data_
 
 &nbsp;
 
@@ -214,7 +220,7 @@ _**Figure 7.** Predicted versus observed (water balance) annual evapotranspirati
 
 ### Water balance ET vs remote-sensed ET
 
-The evapotranspiration derived from water balance method is significantly different from the evapotranspiration derived from remote-sensed data. Since the water balance ET computed for this project was limited to data from one discharge and one precipitation gauge site, it may be inappropriate to compare the two data sets as the method employed already misses out variations across the entire watershed that may improve the estimate. On the other hand, remote-sensed data from TerraClimate may also have its limitations as stated in their [Google Earth Engine catalog](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description): data is inherited from parent datasets, do not capture temporal variability at finer scales than parent datasets, and the water balance model used is very simple and does not account for heteregeneity in vegetation types. Nonetheless, the absence of big peaks/lows and data jumps in the remote-sensed ET (Figure 5) suggests that it can be a more reliable estimate of evapotranspiration. It is also important to note that water balance estimates are not direct measurements and may be affected by other aspects of the water budget (Vadeboncoeur et al., 2018).
+The evapotranspiration derived from water balance method is significantly different from the evapotranspiration derived from remote-sensed data. Since the water balance ET computed for this project was limited to data from one discharge and one precipitation gauge site, it may be inappropriate to compare the two data sets as the method employed already misses out variations across the entire watershed that may improve the estimate. On the other hand, remote-sensed data from TerraClimate may also have its limitations as stated in their [Google Earth Engine catalog](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE#description): data is inherited from parent datasets, do not capture temporal variability at finer scales than parent datasets, and the water balance model used is very simple and does not account for heteregeneity in vegetation types. Nonetheless, the absence of big peaks/lows and data jumps in the remote-sensed ET (Figure 6) suggests that it can be a more reliable estimate of evapotranspiration. It is also important to note that water balance estimates are not direct measurements and may be affected by other aspects of the water budget (Vadeboncoeur et al., 2018).
 
 ### Potential controls on ET
 
