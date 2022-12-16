@@ -9,8 +9,8 @@ All scripts are provided with instructions on which packages and libraries are n
 
 ### Contents (Folders):
 
-1. **Data_download_and_preprocess_code**: R scripts for downloading data; shapefiles of watershed boundaries
-2. **Model_train_and_validate_code**: R script and data for formulating, fitting, and testing models for predicting evapotranspiration; dataframes (in .csv file) of predictand and predictors
+1. **Data_download_and_preprocess_code**: R scripts for downloading data; shapefiles of watershed boundaries and .csv files of the output dataframes of the predictand and predictors for each watershed
+2. **Model_train_and_validate_code**: R script and data for formulating, fitting, and testing models for predicting evapotranspiration; .csv files of the model predictions for each watershed
 3. **Figures_and_figure_code**: markdown file showing the process of creating figures of the data and results; graphical representations of results
 
 Each folder has their corresponding "data" folder where the outputs are stored. Each also has a readme.txt file for the instructions on how to run the scripts. Scripts are arranged and have to be run according to their sequence.
