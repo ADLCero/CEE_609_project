@@ -21,3 +21,4 @@ ggplot2_3.4.0
 tidyverse_1.3.2     streamstats_0.0.3
 sf_1.0-9
 rgee_1.1.5
+car 3.1.1

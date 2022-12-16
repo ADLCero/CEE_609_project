@@ -168,3 +168,16 @@ var.test(IchawayGA_data$WB_annual_total_aet,
 t.test(IchawayGA_data$WB_annual_total_aet,
        IchawayGA_data$RS_annual_total_aet,
        paired = FALSE)                      # p < 0.05, reject HO, means are significantly different
+
+
+################################################################################
+
+# Average water balance ET
+
+mean(OysterNH_data2$WB_annual_total_aet)
+mean(WappingerNY_data2$WB_annual_total_aet)
+mean(BrandywinePA_data$WB_annual_total_aet)
+mean(MechumsVA_data$WB_annual_total_aet)
+mean(FlatNC_data$WB_annual_total_aet)
+mean(NorthForkSC_data$WB_annual_total_aet)
+mean(IchawayGA_data$WB_annual_total_aet)
