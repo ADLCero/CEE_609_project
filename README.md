@@ -23,23 +23,25 @@ Each folder has their corresponding "data" folder where the outputs are stored. 
 
 ![Intro](https://user-images.githubusercontent.com/95758941/207928238-02a77db6-31ab-4d58-8436-7121d1437a2a.png)
 
-_**Figure 1.** Framework of the study_
+_**Figure 1.** Conceptual framework of the study_
 
 
 
-## Research Questions:
+### Research Questions:
 
 1. How does the annual actual evapotranspiration (ET) calculated using the water balance approach compare to remotely-sensed evapotranspiration?
 2. What are the trends in ET that are revealed by these data sets?
 3. Is ET dependent on the following potential controls: 
     - precipitation;
-    - atmospheric demand and energy availability (quantified through PET);
+    - atmospheric demand and energy availability (quantified through potential evapotranspiration (PET));
     - soil moisture;
     - average monthly maximum temperature;
-    - vegetation activity (NDVI)?
+    - vegetation activity (Normalized Difference Vegetation Index (NDVI))?
 
 
 # Data and methods
+
+To represent different regions in the eastern side of the continental US, the following watersheds were selected for this project:
 
 _**Table 1.** Selected watersheds that represent areas from north to south of US' eastern region_
 
@@ -53,18 +55,87 @@ _**Table 1.** Selected watersheds that represent areas from north to south of US
 | North Fork Edisto, South Carolina  | 02173500  |  1768.96  |
 | Ichawaynochaway, Georgia  | 02353500  |  1605.79  |
 
+
 ## Data download and pre-processing
 
-For each variable, 31 water years (1990-2020) of data were obtained. A water year is defined as the 12-month period from October 1st to September 30th of the following year (ex. October 1, 2021 to September 30, 2022 belongs to water year 2022). This is mostly used in the analysis of hydrological data to take into account that fall season is consistently the driest period and when interannual variations in storage will be the smallest. 
+For each variable, 31 water years (1990-2020) of data were obtained. A water year is defined as the 12-month period from October 1st to September 30th of the following year (ex. October 1, 2021 to September 30, 2022 belongs to water year 2022). This is mostly used in the analysis of hydrological data to take into account that fall season is consistently the driest period and when interannual variations in storage will be the smallest. Table 2 and Figure 2 summarizes the different data that were used in this project and the corresponding R package that were used to access and download them.
+
+### Water-balance evapotranspiration
+
+#### _Discharge_
+
+Records of discharge from the United States Geological Survey (USGS) gauge site of each watershed were downloaded using the `dataRetrieval` package in R, which was created to retrieve hydrologic data from the USGS and Water Quality Portal (WQP) and load into R. With the aid of the `tidyverse` package, data were transformed, converted to appropriate units, and summarized per water year. The data were normalized by drainage area and expressed as basin runoff (mm).
+
+#### _Precipitation_
+
+Records of precipitation that will represent each watershed were downloaded using the `rnoaa` package in R, an interface to many of the National Oceanic and Atmospheric Administration (NOAA) data sources. For each of the watershed, the closest monitoring station with complete data from 1989-10-01 to 2020-09-30 was selected. Similar to the discharge data, data were transformed, converted to appropriate scale, and summarized per water year with the aid of the `tidyverse` package.
+
+#### _Computation of water-balance ET_
+
+Given the discharge data expressed as basin runoff (mm) and the precipitation data (mm), water-balance evapotranspiration was computed by simply subtracting the annual total runoff from the annual total precipitation per water year.
+
+### Watershed boundaries
+
+In order to filter the boundaries for the remote-sensed data that would be downloaded via Google Earth Engine, the shapefile of the boundaries of each watershed were downloaded using the `streamstats` package in R. 
+
+### Remote-sensed predictors: ET, PET, soil moisture, monthly maximum temperature
+
+For these remote-sensed predictors, the `rgee` package was used to access their data from Google Earth Engine using the R interface. These were all retrieved from TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho (Abatzoglou et al., 2018). TerraClimate provides monthly data on climatic water balance for global terrestrial surfaces at a resolution of 4638.3 meters. The data set has 14 bands corresponding to different meteorological parameters.
+
+### Remote-sensed predictors: Normalized Difference Vegetation Index (NDVI)
+
+For the NDVI, two sources were used: data that covers 1989-10-01 to 2000-09-30 were obtained from Landsat 5 TM Collection 1 Tier 1 8-Day NDVI Composite (courtesy of the U.S. Geological Survey) while data that covers 2020-10-01 to 2020-09-30 were obained from MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km. Both image collections have a band corresponding to the NDVI which were extracted using the `rgee` package in R.
+
+For all the remote-sensed data, the `tidyverse` package was used to transform them and make necessary scaling prior to summarizing them per water year. A final data frame for each watershed consisting the predictand and predictors were created and exported as .csv files.
+
+&nbsp;
+
+_**Table 2.** Sources of other data used in this project and the corresponding R package available to download them_
+
+| Data  | Source/Description | R package |URL |
+| ------------- | ------------- | ------------- |------------- |
+| discharge | United States Geological Survey (USGS)| dataRetrieval  | https://cran.r-project.org/web/packages/dataRetrieval/vignettes/dataRetrieval.html |
+| precipitation (gauge) | National Oceanic and Atmospheric Administration (NOAA)| rnoaa  | https://cran.r-project.org/web/packages/rnoaa/index.html|
+| watershed boundary | United States Geological Survey (USGS)| streamstats  | https://github.com/markwh/streamstats |
+| evapotranspiration | TerraClimate: Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho |   | https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_TERRACLIMATE |
+| potential evapotranspiration, precipitation (gridded), soil moisture, monthly maximum temperature  |^ | rgee  | https://github.com/r-spatial/rgee |
+| NDVI  | Landsat 5 TM Collection 1 Tier 1 8-Day NDVI Composite |^| https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LT05_C01_T1_8DAY_NDVI#description |
+|^  | MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km |^|https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A2#description |
+
+
+&nbsp;
 
 ## Model training and validation
 
-The final dataframe containing 31 water years of the water-balance ET and the predictors were divided into training and validation data set (1990-2013, 25 years) for fitting the model and 20% of the data (2014-2020, 7 years) were separated and not processed for use in testing and evaluation of the model fit.
+Following the process of supervised learning (VanderPlas, 2016) and to evaluate the roles of the potential controls on evapotranspiration, a multiple linear regression relationship was fit between these predictors and the annual water balance ET for each site:
+
+![Screenshot 2022-12-16 at 05 51 55](https://user-images.githubusercontent.com/95758941/208082759-e5e6be73-5e06-4b40-ae52-81ce10bd0c6c.png)
+
+where Y is the dependent variable (water-balance ET); β<sub>0</sub> is the intercept; β<sub>i</sub> is the slope of the X<sub>i</sub> independent variables; and ϵ is the model's error term. 
+
+
+The final dataframe containing 31 water years of the water-balance ET and the predictors were divided into training and validation data set (1990-2013, 25 years) for fitting the model and 20% of the data (2014-2020, 7 years) were separated and not processed for use in testing and evaluation of the model fit. 
+
+
+Prior to making the regression models, the data set were inspected for multicollinearity by making a correlation plot and checking the corrrelation between predictors. A threshold of | > 0.7 | was used to determine if variables have high correlation or not. Regression models were created using the `lm()` function from the `stats` package in R. Initially, a model with all the predictor variables and a model with single predictor variable (precipitation, based on its consistent good linear relationship with the water balance ET) were made. The `vif()` function from the `car` package was used to check for the Variance Inflation Factor (VIF) of the model's parameters in order to detect multicollinearity. 
+
+To check model performance, the adjusted R<sup>2</sup> and p-values of the model and each variable in it were considered. Subset regression using `leaps`, which identifies the best combination of variables that will give the highest adjusted R<sup>2</sup>, was used to create models. To further aid in identifying the "best" model,  stepwise regression using an F test using `MASS` and `stepAIC` were also done. The AIC and BIC of each model were also assessed. In the end, the goal was to select a model that gives the highest adjusted R<sup>2</sup> with, as much as possible, all variables significant at alpha = 0.05 level. 
+
+The selected "best" model was also checked for violations of ordinary least squares assumptions by inspecting plots of predictions versus residuals, observed values versus predicted values, and model residuals and predicted values. The model's residuals were also tested for normality using probability plot correlation test statistic (also known as Ryan Joiner test for normality) and Shapiro-Wilk test for normality using the `shapiro.test()` from the base `stats` package in R. Autocorrelation among the residuals were also checked using the `acf()` function. After confirming that the selected model's residuals are normal, this was used to predict for the ET using the training data set and the testing data set.
+
+
+## Other statistical analysis
+
+In order to compare the water balance ET and remote-sensed ET, normality and equality of variances of the data were checked first using `shapiro.test()` and `var.test()` functions, respectively. An independent samples test was then done using `t.test()` to determine if the means of the two data sets are significantly different.
+
+
+&nbsp;
 
 ![Data_Methods2](https://user-images.githubusercontent.com/95758941/207957835-3d0b4660-fedd-4046-8d24-31f1ef72f52c.png)
 _**Figure 2.** Methodological framework of the study. Important R packages used are in the orange rectangles._
 
 # Results
+
 
 ![predictors](https://user-images.githubusercontent.com/95758941/208009974-56da6ee2-ea50-4b7d-8b01-82d5220e4467.png)
 _**Figure .** Annual total precipitation, total potential evapotranspiration, total soil moisture, average monthly maximum temperature, and maximum NDVI from water years 1990-2020_
@@ -116,6 +187,17 @@ _**Figure .** Predicted versus observed (water balance) annual evapotranspiratio
 # Moving forward
 
 # References
+
+Carter, E., Hain, C., Anderson, M., & Steinschneider, S. (2018). A Water Balance–Based, Spatiotemporal Evaluation of Terrestrial Evapotranspiration Products across the Contiguous United States. Journal of Hydrometeorology, 19(5), 891–905. https://doi.org/10.1175/JHM-D-17-0186.1
+
+VanderPlas, J. (2016, November). What Is Machine Learning? | Python Data Science Handbook. https://jakevdp.github.io/PythonDataScienceHandbook/05.01-what-is-machine-learning.html
+
+
+# Data sources
+
+Abatzoglou, J.T., S.Z. Dobrowski, S.A. Parks, K.C. Hegewisch, 2018, Terraclimate, a high-resolution global dataset of monthly climate and climatic water balance from 1958-2015, Scientific Data 5:170191, doi:10.1038/sdata.2017.191
+
+MOD13A2 v061. https://doi.org/10.5067/MODIS/MOD13A2.061
 
 # R packages
 
