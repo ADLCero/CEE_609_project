@@ -26,6 +26,7 @@ Each folder has their corresponding "data" folder where the outputs are stored. 
 _**Figure 1.** Framework of the study_
 
 
+
 ## Research Questions:
 
 1. How does the annual actual evapotranspiration (ET) calculated using the water balance approach compare to remotely-sensed evapotranspiration?
@@ -64,6 +65,15 @@ The final dataframe containing 31 water years of the water-balance ET and the pr
 _**Figure 2.** Methodological framework of the study. Important R packages used are in the orange rectangles._
 
 # Results
+
+![Screenshot 2022-12-15 at 20 50 51](https://user-images.githubusercontent.com/95758941/208003548-668b20f4-826d-4b02-b219-b1805fae8a59.png)
+
+
+&nbsp;
+
+![Screenshot 2022-12-15 at 20 58 29](https://user-images.githubusercontent.com/95758941/208004549-51b71f50-47ab-41a5-a239-398cfd31ab44.png)
+
+\* Only precipitation is the significant variable
 
 # Discussion
 
