@@ -141,10 +141,14 @@ The selected "best" model was also checked for violations of ordinary least squa
 
 In order to compare the water balance ET and remote-sensed ET, normality and equality of variances of the data were checked first using `shapiro.test()` and `var.test()` functions, respectively. An independent samples test was then done using `t.test()` to determine if the means of the two data sets are significantly different.
 
+## Data visualization
+
+Graphical representations of the predictors and models were created using the `ggplot2` package.
+
 
 &nbsp;
 
-![Data_Methods2](https://user-images.githubusercontent.com/95758941/207957835-3d0b4660-fedd-4046-8d24-31f1ef72f52c.png)
+![Data_Methods2](https://user-images.githubusercontent.com/95758941/208135950-3b60695a-3889-4e7e-b602-7628591b1321.png)
 _**Figure 2.** Methodological framework of the study. Important R packages used are in the orange rectangles._
 
 # Results
